@@ -1,0 +1,78 @@
+.section {
+  background: #fdf8ef;
+  padding: 7rem 1rem 7rem 1rem;
+}
+
+.pricingHeader {
+  text-align: center;
+  margin-bottom: 7rem;
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: #2a1a0a;
+  margin-bottom: 1.1rem;
+}
+
+.subtitle {
+  color: #7a6e65;
+  font-size: 1.13rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.faqHeader {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #181c23;
+  margin-bottom: 2.5rem;
+}
+
+.faqList {
+  max-width: 900px;
+  margin: 0 auto;
+  background: none;
+}
+
+.faqItem {
+  border-bottom: 1px solid #e2e2db;
+}
+
+.faqQ {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  text-align: left;
+  font-size: 1.13rem;
+  font-weight: 500;
+  color: #181c23;
+  padding: 1.2rem 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.15s;
+}
+
+.faqQ:hover {
+  background: #f5f3ee;
+}
+
+.arrow {
+  font-size: 1.1rem;
+  margin-left: 1rem;
+  color: #a6a09b;
+}
+
+.faqA {
+  color: #7a6e65;
+  font-size: 1.08rem;
+  padding-bottom: 1.2rem;
+  padding-right: 2rem;
+  padding-left: 0.2rem;
+  max-width: 90%;
+  line-height: 1.9;
+} 

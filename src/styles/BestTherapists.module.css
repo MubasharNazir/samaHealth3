@@ -1,0 +1,132 @@
+.section {
+  background: #fdf8ef;
+  padding: 6rem 1rem 0 1rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.title {
+  font-size: 2.3rem;
+  font-weight: 500;
+  color: #2a1a0a;
+  margin-bottom: 1.1rem;
+}
+
+.subtitle {
+  color: #7a6e65;
+  font-size: 1.13rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.featureRow, .featureRowReverse {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.featureRowReverse {
+  flex-direction: row-reverse;
+}
+
+.featureText, .featureTextRight, .featureImg {
+  flex: 1 1 0;
+}
+
+.featureText {
+  max-width: 420px;
+}
+
+.featureText h3 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #181c23;
+  margin-bottom: 1.1rem;
+}
+
+.featureText p {
+  color: #7a6e65;
+  font-size: 1.13rem;
+}
+
+.featureTextRight {
+  /* text-align: right; */
+}
+
+.featureImg {
+  width: 400px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 28px;
+  box-shadow: 0 4px 24px rgba(30, 60, 90, 0.08);
+}
+
+@media (max-width: 1000px) {
+  .featureRow, .featureRowReverse {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+  .featureRowReverse {
+    align-items: flex-end;
+  }
+  .featureText, .featureTextRight {
+    max-width: 100%;
+    width: 100%;
+    flex: unset;
+  }
+  .featureImg {
+    width: 100%;
+    max-width: 340px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 700px) {
+  .featureRow, .featureRowReverse {
+    flex-direction: column-reverse;
+    gap: 1.2rem;
+    align-items: stretch;
+  }
+  .featureText, .featureTextRight {
+    max-width: 100%;
+    width: 100%;
+    flex: unset;
+  }
+  .featureImg {
+    width: 100%;
+    max-width: 98vw;
+    height: auto;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .header {
+    text-align: left;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+  }
+  .title {
+    text-align: left;
+    font-size: 1.2rem;
+  }
+  .subtitle {
+    text-align: left;
+    font-size: 0.98rem;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+  }
+} 

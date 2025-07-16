@@ -1,0 +1,294 @@
+.footer {
+  background: #111;
+  color: #fff;
+  padding: 4rem 2rem 2rem 2rem;
+  font-size: 1.08rem;
+  box-sizing: border-box;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.colBrand {
+  flex: 1 1 100px;
+  min-width: 280px;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.logoImg {
+  max-width: 160px;
+  height: auto;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.descriptionWhite {
+  font-size: 1rem;
+  color: #ccc;
+  font-weight: 400;
+  line-height: 1.4;
+  margin-top: 1rem;
+}
+
+.tagline {
+  font-size: 1.08rem;
+  color: #ccc;
+  line-height: 1.4;
+}
+
+.colLinks {
+  display: flex;
+  gap: 3rem;
+  flex: 1 1 200px;
+  min-width: 300px;
+  margin-bottom: 2rem;
+}
+
+.linkGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  opacity: 0.85;
+  transition: color 0.18s, opacity 0.18s;
+  line-height: 1.4;
+}
+
+.link:hover {
+  color: #e6a481;
+  opacity: 1;
+}
+
+.colContact {
+  flex: 1 1 50px;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.email {
+  color: #fff;
+  font-size: 1.05rem;
+  opacity: 0.85;
+}
+
+.email a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.18s;
+}
+
+.email a:hover {
+  color: #e6a481;
+  text-decoration: underline;
+}
+
+.socials {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #e6a481;
+  border-radius: 6px;
+  padding: 6px;
+  transition: all 0.18s ease;
+  background: transparent;
+  color: #fff;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.social svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  color: #fff;
+}
+
+.social:hover {
+  border-color: #fff;
+  box-shadow: 0 4px 12px rgba(230, 164, 129, 0.3);
+  transform: translateY(-2px);
+}
+
+.divider {
+  border-top: 1px solid #333;
+  margin: 3rem 0 1.5rem 0;
+}
+
+.copyright {
+  text-align: center;
+  color: #888;
+  font-size: 0.95rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+  .footer {
+    padding: 3rem 1.5rem 2rem 1.5rem;
+  }
+  
+  .inner {
+    gap: 2.5rem;
+  }
+  
+  .colLinks {
+    gap: 2rem;
+  }
+}
+
+/* Mobile landscape and smaller tablets */
+@media (max-width: 768px) {
+  .footer {
+    padding: 2.5rem 1rem 1.5rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .inner {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: stretch;
+  }
+  
+  .colBrand,
+  .colLinks,
+  .colContact {
+    min-width: unset;
+    width: 100%;
+  }
+  
+  .colLinks {
+    order: 2;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  
+  .colContact {
+    order: 3;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .logoImg {
+    max-width: 140px;
+  }
+  
+  .divider {
+    margin: 2rem 0 1rem 0;
+  }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+  .footer {
+    padding: 2rem 1rem 1rem 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .inner {
+    gap: 1.5rem;
+  }
+  
+  .colLinks {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .linkGroup {
+    gap: 0.6rem;
+  }
+  
+  .logoImg {
+    max-width: 120px;
+  }
+  
+  .tagline {
+    font-size: 1rem;
+  }
+  
+  .socials {
+    gap: 0.6rem;
+    justify-content: center;
+  }
+  
+  .social {
+    min-width: 40px;
+    min-height: 40px;
+    padding: 4px;
+  }
+  
+  .social svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .footer {
+    padding: 1.5rem 0.5rem 1rem 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .inner {
+    gap: 1rem;
+  }
+  
+  .logoImg {
+    max-width: 100px;
+  }
+  
+  .tagline {
+    font-size: 0.9rem;
+  }
+  
+  .email {
+    font-size: 0.9rem;
+  }
+  
+  .copyright {
+    font-size: 0.85rem;
+  }
+  
+  .colLinks {
+    gap: 1rem;
+  }
+  
+  .linkGroup {
+    gap: 0.4rem;
+  }
+  
+  .link {
+    font-size: 0.9rem;
+  }
+} 

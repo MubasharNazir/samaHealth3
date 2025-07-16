@@ -1,0 +1,222 @@
+.legalPageBg {
+  min-height: 100vh;
+  background: #fdf8ef;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background: #fdf8ef;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(30, 60, 90, 0.03);
+  display: flex;
+  align-items: center;
+  padding: 1.2rem 6rem;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.logo {
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: #181c23;
+  letter-spacing: 1px;
+  font-family: var(--font-work-sans);
+  margin-left: 0;
+  padding: 0;
+}
+
+.logoImg {
+  height: 2.7rem;
+  width: auto;
+  margin-right: 0.7rem;
+  vertical-align: middle;
+}
+
+.legalContainerCustom {
+  max-width: 800px;
+  margin: 2rem auto 3rem auto;
+  background: #fff;
+  border: 1.5px solid #e6a481;
+  border-radius: 5px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  padding: 2.5rem 2rem 2rem 2rem;
+}
+
+.legalHeadingCustom {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #e6a481;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  letter-spacing: -1px;
+}
+
+.legalContentCustom {
+  color: #222;
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.legalContentCustom p:first-of-type, .legalContentCustom p:first-of-type strong {
+  color: #111 !important;
+}
+
+.legalContentCustom h2,
+.legalContentCustom h3,
+.legalContentCustom h4 {
+  color: #e6a481;
+  margin-top: 2rem;
+  margin-bottom: 0.7rem;
+  font-weight: 600;
+}
+
+.legalContentCustom ul,
+.legalContentCustom ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.legalContentCustom li {
+  margin-bottom: 0.4rem;
+}
+
+.legalContentCustom strong {
+  color: #e6a481;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .legalContainerCustom {
+    padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+  }
+  .legalHeadingCustom {
+    font-size: 1.3rem;
+  }
+}
+
+.legalContainer {
+  max-width: 900px;
+  margin: 3rem auto 4rem auto;
+  background: #fff;
+  border: 2px solid #e2e8f0;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(30, 60, 90, 0.07);
+  padding: 2.5rem 2.2rem 2.5rem 2.2rem;
+}
+.legalHeading {
+  text-align: center;
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #181c23;
+  margin-bottom: 2.2rem;
+}
+.legalContent {
+  font-size: 1.13rem;
+  color: #222;
+  line-height: 1.7;
+}
+.legalContent ul, .legalContent ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+.legalContent h2, .legalContent h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #181c23;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.legalSection {
+  margin-bottom: 2.2rem;
+}
+@media (max-width: 700px) {
+  .legalContainer {
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+  }
+  .legalHeading {
+    font-size: 1.5rem;
+  }
+  .legalContent {
+    font-size: 1rem;
+  }
+}
+
+.navTabs {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  position: absolute;
+  left: 44%;
+  transform: translateX(-50%);
+}
+
+.tabLink {
+  color: #181c23;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.08rem;
+  padding: 0.2rem 0.7rem 0.4rem 0.7rem;
+  border-radius: 6px;
+  transition: color 0.18s, background 0.18s, border-bottom 0.18s;
+  border-bottom: 2.5px solid transparent;
+  position: relative;
+}
+
+.tabLink:hover {
+  color: #2e7dff;
+  background: #f5f3ee;
+}
+
+.activeTab {
+  border-bottom: 2.5px solid #e6a481;
+  color: #e6a481;
+}
+
+.ctaBtn {
+  background: none;
+  border: 2px solid #181c23;
+  color: #181c23;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1.3rem;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border 0.18s;
+  font-family: var(--font-work-sans);
+  margin-left: 2rem;
+  flex-shrink: 0;
+}
+
+.ctaBtn:hover {
+  background: #181c23;
+  color: #fff;
+  border-color: #181c23;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 1rem 1.2rem;
+  }
+  .logo {
+    font-size: 1.3rem;
+  }
+  .ctaBtn {
+    font-size: 0.97rem;
+    padding: 0.45rem 1rem;
+    margin-left: 0.7rem;
+  }
+  .logoImg {
+    height: 2rem;
+  }
+  .navTabs {
+    gap: 1.1rem;
+  }
+} 

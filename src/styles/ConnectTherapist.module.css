@@ -1,0 +1,94 @@
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 1rem 0 1rem;
+  background: #fdf8ef;
+}
+
+.box {
+  background: #d2e8d0;
+  border-radius: 28px;
+  padding: 3.5rem 2.5rem 2.8rem 2.5rem;
+  max-width: 1300px;
+  width: 100%;
+  box-shadow: 0 2px 16px rgba(30, 60, 90, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading {
+  font-size: 2.1rem;
+  font-weight: 500;
+  color: #223522;
+  text-align: center;
+  margin-bottom: 2.8rem;
+}
+
+.stepsRow {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  gap: 2.5rem;
+  margin-bottom: 2.8rem;
+}
+
+.step {
+  flex: 1 1 0;
+  min-width: 220px;
+  max-width: 340px;
+}
+
+.stepTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #223522;
+  margin-bottom: 1rem;
+}
+
+.stepDesc {
+  color: #223522;
+  font-size: 1.13rem;
+  line-height: 1.7;
+}
+
+.ctaBtn {
+  background: #23282c;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 14px;
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+  transition: background 0.18s;
+  box-shadow: 0 2px 12px rgba(30, 60, 90, 0.08);
+}
+
+.ctaBtn:hover {
+  background: #111;
+}
+
+@media (max-width: 900px) {
+  .box {
+    padding: 2rem 0.7rem;
+  }
+  .stepsRow {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+  .step {
+    max-width: auto;
+    min-width: unset;
+    text-align: left;
+  }
+  .stepTitle {
+    text-align: left;
+  }
+  .stepDesc {
+    text-align: left;
+  }
+} 

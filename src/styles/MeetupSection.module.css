@@ -1,0 +1,165 @@
+.meetupSection {
+  background: #fdf8ef;
+  padding: 3.5rem 1rem 3.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.9rem;
+}
+
+.card {
+  background: #fbf4e5;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(230,164,129,0.10);
+  border-left: 7px solid #e6a481;
+  padding: 2.5rem 2.5rem 2.5rem 2.2rem;
+  max-width: 700px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.textBlock {
+  flex: 1 1 0;
+  text-align: left;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #181c23;
+  margin-bottom: 1.1rem;
+}
+
+.headingBlack {
+  color: #181c23;
+}
+
+.description {
+  color: #222;
+  font-size: 1.13rem;
+  margin-bottom: 2.2rem;
+}
+.descriptionWhite {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 2.2rem;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  background: #fbf4e5;
+  color: #181c23;
+  font-size: 1.18rem;
+  font-weight: 500;
+  padding: 0.95rem 2.5rem;
+  border-radius: 10px;
+  border: 2px solid #181c23;
+  text-decoration: none;
+  box-shadow: 0 2px 12px rgba(30,30,30,0.08);
+  transition: background 0.18s, color 0.18s, border 0.18s, box-shadow 0.18s;
+  outline: none;
+  gap: 0.8rem;
+  margin-left: 2.5rem;
+}
+
+.ctaBtn:hover {
+  background: #181c23;
+  color: #fff;
+  border-color: #181c23;
+  box-shadow: 0 6px 32px rgba(230,164,129,0.18);
+}
+
+.meetupIcon {
+  font-size: 1.5rem;
+  margin-right: 0.7rem;
+}
+
+@media (max-width: 900px) {
+  .card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.2rem;
+    padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+    box-sizing: border-box;
+  }
+  .ctaBtn {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+    font-size: 1rem;
+    padding: 0.8rem 1.2rem;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0.2rem auto;
+  }
+  .textBlock {
+    text-align: center;
+    width: 100%;
+  }
+  .heading {
+    text-align: center;
+    font-size: 1.15rem;
+  }
+  .description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .meetupSection {
+    padding: 1rem 0.7rem;
+    overflow-x: hidden;
+  }
+  .card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.7rem;
+    padding: 1.2rem 0.7rem;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .ctaBtn {
+    font-size: 0.97rem;
+    padding: 0.7rem 0.7rem;
+    border-radius: 8px;
+    max-width: 100%;
+    margin: 0.15rem auto;
+  }
+  .textBlock {
+    text-align: center;
+    width: 100%;
+  }
+  .heading {
+    font-size: 1.05rem;
+  }
+  .description {
+    font-size: 0.93rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .meetupSection {
+    padding: 0.5rem 0.3rem;
+  }
+  .card {
+    padding: 0.7rem 0.3rem;
+    gap: 0.2rem;
+    border-radius: 12px;
+  }
+  .ctaBtn {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.2rem;
+    border-radius: 6px;
+    max-width: 100%;
+  }
+  .heading {
+    font-size: 0.93rem;
+  }
+  .description {
+    font-size: 0.78rem;
+  }
+} 
