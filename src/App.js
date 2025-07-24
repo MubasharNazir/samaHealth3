@@ -20,6 +20,7 @@ import MeetupSection from './components/MeetupSection';
 import EducationalInstitute from "./components/educationalInstitute";
 import ContactDropdown from "./components/ContactDropdown";
 import NavigationBar from "./components/NavigationBar";
+import FeaturedInSection from "./components/FeaturedInSection";
 
 function getActiveTab(location) {
   if (location.pathname === '/') {
@@ -109,6 +110,14 @@ function MainApp() {
       <ConnectTherapist />
       <div style={{ background: '#fdf8ef', height: '6rem', width: '100%' }} />
       <Testimonials />
+      {/* Add the FeaturedInSection here, under Testimonials */}
+      <FeaturedInSection heading={"We’ve Been Seen On"} logos={[
+        { src: "/assets/aljazera.svg", alt: "Aljazeera" },
+        { src: "/assets/arabia.png", alt: "Arabia" },
+        { src: "/assets/khaleej-times-logo.svg", alt: "Khaleej Times" },
+        { src: "/assets/edge.webp", alt: "Edge" },
+        { src: "/assets/gulf-news-logo.png", alt: "Gulf News" }
+      ]} />
       <PricingFAQ />
       <MeetupSection />
       </div>
