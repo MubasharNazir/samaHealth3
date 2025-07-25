@@ -80,6 +80,14 @@ const podcastsData = [
     youtubeUrl: "https://youtu.be/F2MUhs-kra0",
     duration: "44:20",
     category: "Self-Care"
+  },
+  {
+    id: 9,
+    title: "Sama Health Podcast (YouTube)",
+    description: "Watch our latest podcast episode on YouTube.",
+    youtubeUrl: "https://www.youtube.com/watch?v=Z3kIPquMhOg&ab_channel=SamaHealth",
+    duration: "",
+    category: "Therapy"
   }
 ];
 function getActiveTab(location) {
