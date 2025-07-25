@@ -83,10 +83,10 @@ const podcastsData = [
   },
   {
     id: 9,
-    title: "Sama Health Podcast (YouTube)",
-    description: "Watch our latest podcast episode on YouTube.",
+    title: "Teen Mental Health in the Era of AI & Digitization",
+    description: "AI and social media are changing how teens grow up. Join Vinita for simple tips to help parents manage screen time, emotions, and support their teens.",
     youtubeUrl: "https://www.youtube.com/watch?v=Z3kIPquMhOg&ab_channel=SamaHealth",
-    duration: "",
+    duration: "36:34",
     category: "Therapy"
   }
 ];
