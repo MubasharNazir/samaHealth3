@@ -243,7 +243,7 @@ export default function ContactForm() {
           </div>
         </section>
       </div>
-      <FeaturedInSection  heading={"We’ve Been Seen On"} logos={logos}/>
+      <FeaturedInSection  heading={"We have been featured in"} logos={logos}/>
       <div className={styles.container}>
         <div ref={formRef} className={styles.formCard}>
           <>

@@ -111,7 +111,7 @@ function MainApp() {
       <div style={{ background: '#fdf8ef', height: '6rem', width: '100%' }} />
       <Testimonials />
       {/* Add the FeaturedInSection here, under Testimonials */}
-      <FeaturedInSection heading={"We’ve Been Seen On"} logos={[
+      <FeaturedInSection heading={"We have been featured in"} logos={[
         { src: "/assets/aljazera.svg", alt: "Aljazeera" },
         { src: "/assets/arabia.png", alt: "Arabia" },
         { src: "/assets/khaleej-times-logo.svg", alt: "Khaleej Times" },
