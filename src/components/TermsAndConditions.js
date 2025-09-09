@@ -2,27 +2,63 @@ import React, { useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import styles from '../styles/Legal.module.css';
 import Footer from './Footer';
+import NavigationBar from './NavigationBar';
+function getActiveTab(location) {
+  if (location.pathname === '/') {
+    if (location.hash === '#testimonials') return 'testimonials';
+    if (location.hash === '#faqs') return 'faqs';
+    return 'home';
+  }
+  if (location.pathname === '/book-call') return 'contact';
+  return '';
+}
 
 export default function TermsAndConditions() {
   const navigate = useNavigate();
   const location = useLocation();
+  const activeTab = getActiveTab(location);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const isHome = location.pathname === '/';
+  const handleAnchorClick = (e) => {
+    e.preventDefault();
+    const href = e.currentTarget.getAttribute('href');
+    const targetId = href.split('#')[1];
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      navigate(href);
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } else {
+      navigate(href);
+    }
+  };
   const isContact = location.pathname === '/book-call';
   return (
     <div className={styles.legalPageBg}>
-      <nav className={styles.navbar}>
-        <div className={styles.logo}>
-          <img src="/assets/logo.png" alt="Sama Health Logo" className={styles.logoImg} />
-        </div>
-        <ul className={styles.navTabs}>
-          <li><Link to="/" className={`${styles.tabLink} ${isHome ? styles.activeTab : ''}`}>Home</Link></li>
-          <li><a href="/#testimonials" className={`${styles.tabLink} ${isHome ? styles.activeTab : ''}`}>Testimonials</a></li>
-          <li><a href="/#faqs" className={`${styles.tabLink} ${isHome ? styles.activeTab : ''}`}>Faqs</a></li>
-        </ul>
-      </nav>
+       <NavigationBar>
+        <li>
+          <Link
+            to="/"
+            className={`${styles.tabLink} ${activeTab === 'home' ? styles.activeTab : ''}`}
+          >
+            Home
+          </Link>
+        </li>
+        <li><a href="/#testimonials" onClick={handleAnchorClick} className={`${styles.tabLink} ${activeTab === 'testimonials' ? styles.activeTab : ''}`}>Testimonials</a></li>
+        <li><a href="/#faqs" onClick={handleAnchorClick} className={`${styles.tabLink} ${activeTab === 'faqs' ? styles.activeTab : ''}`}>Faqs</a></li>
+        <li>
+          <Link
+            to="/podcasts"
+            className={`${styles.tabLink} ${activeTab === 'podcasts' ? styles.activeTab : ''}`}
+          >
+            Podcasts
+          </Link>
+        </li>
+      </NavigationBar>
       <div className={styles.legalContainerCustom}>
         <h1 className={styles.legalHeadingCustom}>Terms and Conditions</h1>
         <div className={styles.legalContentCustom}>

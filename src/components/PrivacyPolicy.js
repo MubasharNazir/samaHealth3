@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styles from '../styles/Legal.module.css';
 import Footer from './Footer';
+import NavigationBar from './NavigationBar';
 
 function getActiveTab(location) {
   if (location.pathname === '/') {
@@ -16,21 +17,54 @@ function getActiveTab(location) {
 export default function PrivacyPolicy() {
   const location = useLocation();
   const activeTab = getActiveTab(location);
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  const handleAnchorClick = (e) => {
+    e.preventDefault();
+    const href = e.currentTarget.getAttribute('href');
+    const targetId = href.split('#')[1];
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      navigate(href);
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } else {
+      navigate(href);
+    }
+  };
   return (
     <div className={styles.legalPageBg}>
-      <nav className={styles.navbar}>
-        <div className={styles.logo}>
-          <img src="/assets/logo.png" alt="Sama Health Logo" className={styles.logoImg} />
-        </div>
-        <ul className={styles.navTabs}>
-          <li><Link to="/" className={`${styles.tabLink} ${activeTab === 'home' ? styles.activeTab : ''}`}>Home</Link></li>
-          <li><a href="/#testimonials" className={`${styles.tabLink} ${activeTab === 'testimonials' ? styles.activeTab : ''}`}>Testimonials</a></li>
-          <li><a href="/#faqs" className={`${styles.tabLink} ${activeTab === 'faqs' ? styles.activeTab : ''}`}>Faqs</a></li>
-        </ul>
-      </nav>
+    <NavigationBar>
+        <li>
+          <Link
+            to="/"
+            className={`${styles.tabLink} ${activeTab === 'home' ? styles.activeTab : ''}`}
+            onClick={e => {
+              if (location.pathname === '/' && !location.hash) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
+          >
+            Home
+          </Link>
+        </li>
+        <li><a href="/#testimonials" onClick={handleAnchorClick} className={`${styles.tabLink} ${activeTab === 'testimonials' ? styles.activeTab : ''}`}>Testimonials</a></li>
+        <li><a href="/#faqs" onClick={handleAnchorClick} className={`${styles.tabLink} ${activeTab === 'faqs' ? styles.activeTab : ''}`}>Faqs</a></li>
+        <li>
+          <Link
+            to="/podcasts"
+            className={`${styles.tabLink} ${activeTab === 'podcasts' ? styles.activeTab : ''}`}
+          >
+            Podcasts
+          </Link>
+        </li>
+      </NavigationBar>
       <div className={styles.legalContainerCustom}>
         <h1 className={styles.legalHeadingCustom}>Privacy Policy</h1>
         <div className={styles.legalContentCustom}>

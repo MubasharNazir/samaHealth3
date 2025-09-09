@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import styles from '../styles/MainDemoRequestForm.module.css';
 import emailjs from 'emailjs-com';
 import appleLogo from '../assets/apple.png';
@@ -95,6 +96,8 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
   const [form, setForm] = useState(initialState);
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
+  const [recaptchaValue, setRecaptchaValue] = useState(null);
+  const recaptchaRef = useRef(null);
 
   const validate = () => {
     const errs = {};
@@ -102,6 +105,7 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
     if (!form.email.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) errs.email = 'Valid email required';
     if (!form.phoneNumber.trim() || !/^\d{7,}$/.test(form.phoneNumber.replace(/\s+/g, ''))) errs.phoneNumber = 'Enter a valid phone number';
     if (!form.countryCode) errs.countryCode = 'Select country code';
+    if (!recaptchaValue) errs.recaptcha = 'Please complete the reCAPTCHA verification';
     return errs;
   };
 
@@ -115,6 +119,18 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
       }
       return { ...prev, [name]: value };
     });
+  };
+
+  const handleRecaptchaChange = (value) => {
+    setRecaptchaValue(value);
+    // Clear recaptcha error when user completes it
+    if (value && errors.recaptcha) {
+      setErrors(prev => ({ ...prev, recaptcha: null }));
+    }
+  };
+
+  const handleRecaptchaExpired = () => {
+    setRecaptchaValue(null);
   };
 
   const handleSubmit = async e => {
@@ -162,10 +178,10 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
       <div className={styles.container}>
         <div className={styles.row}>
           <div className={`${styles.colLg6} ${styles.colMd6} ${styles.colSm12} ${styles.col12} ${styles.aSide}`}>
-            <p className={styles.scheduleText}>Join the South Asian mental health community in UAE</p>
-            <h1>Life is hard sometimes. Insta-therapy can only help so much. Let's talk about it.</h1>
+            
+            <div className={styles.formHeading}>Life is hard sometimes. Insta-therapy can only help so much. Let's talk about it.</div>
             <p>Access qualified therapists that you can deeply connect with. We offer a curated offering for the South Asian community.</p>
-            <h2>Download Client App</h2>
+            <div className={styles.formSubHeading}>Download the app to feel better</div>
             <div className={`${styles.contentStartAligned} ${styles.gap2}`}>
               <a 
                 href="https://apps.apple.com/ae/app/sama-health/id6447992708" 
@@ -194,7 +210,7 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
           <div className={`${styles.colLg6} ${styles.colMd6} ${styles.colSm12} ${styles.col12}`}>
             <div className={`${styles.card} ${styles.contactUsSection}`}>
               <div className={styles.cardBody}>
-                <h2 className={styles.formHeading}>Request demo</h2>
+                <h2 className={`${styles.formHeading}`}>Start your wellness journey</h2>
                 <form 
                   autoComplete="off" 
                   className={`${styles.antForm} ${styles.antFormVertical}`} 

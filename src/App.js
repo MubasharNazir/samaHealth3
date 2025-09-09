@@ -147,7 +147,6 @@ function MainApp() {
         { src: "/assets/edge.webp", alt: "Edge" },
         { src: "/assets/gulf-news-logo.png", alt: "Gulf News" }
       ]} />
-      <PricingFAQ />
       <div className={styles.container}>
         <DemoRequestForm 
           formRef={formRef}
@@ -155,6 +154,7 @@ function MainApp() {
           onSubmitError={handleFormSubmitError}
         />
       </div>
+      <PricingFAQ />
       <MeetupSection />
       </div>
       <Footer />
