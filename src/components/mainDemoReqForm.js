@@ -333,7 +333,7 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
                   <div className={styles.mb3}>
                     <ReCAPTCHA
                       ref={recaptchaRef}
-                      sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+                      sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY || "6LdNccMrAAAAAAULnkSnq4QfyceXv0NZRyiJAM-o"}
                       onChange={handleRecaptchaChange}
                       onExpired={handleRecaptchaExpired}
                       theme="light"
