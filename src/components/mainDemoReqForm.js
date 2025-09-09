@@ -160,6 +160,10 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
         process.env.REACT_APP_EMAILJS_USER_ID
       );
       setForm(initialState);
+      setRecaptchaValue(null);
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
       if (onSubmitSuccess) {
         onSubmitSuccess();
       }
@@ -327,10 +331,15 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
                   </div>
                   
                   <div className={styles.mb3}>
-                    {/* reCAPTCHA placeholder - would need actual implementation */}
-                    <div className={styles.recaptchaPlaceholder}>
-                      reCAPTCHA will be implemented here
-                    </div>
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+                      onChange={handleRecaptchaChange}
+                      onExpired={handleRecaptchaExpired}
+                      theme="light"
+                      size="normal"
+                    />
+                    {errors.recaptcha && <span className={styles.error}>{errors.recaptcha}</span>}
                   </div>
                   
                   {errors.submit && <span className={styles.error}>{errors.submit}</span>}
