@@ -1,0 +1,516 @@
+.headerSection {
+  background-image: url('../assets/bg-form.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+  min-height: 70vh;
+  padding: 6rem 0;
+}
+
+.container {
+  max-width: 1390px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.colLg6, .colMd6, .colSm12, .col12 {
+  padding: 0 15px;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.aSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 40px;
+}
+
+.aSide h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin: 20px 0;
+  line-height: 1.2;
+}
+
+.aSide h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 30px 0 20px 0;
+}
+
+.aSide p {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.scheduleText {
+  font-size: 1rem;
+  color: #e6a481;
+  font-weight: 600;
+  margin-bottom: 10px !important;
+}
+
+.contentStartAligned {
+  display: flex;
+  align-items: center;
+}
+
+.gap2 {
+  gap: 15px;
+}
+
+.imgFluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.playstoreIcon {
+  width: 150px;
+  height: auto;
+}
+
+.cursorPointer {
+  cursor: pointer;
+}
+
+.card {
+  background: #ffffff46;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.contactUsSection {
+  height: fit-content;
+}
+
+.cardBody {
+  background-color: #ffffff41;
+  padding: 40px 32px 32px 32px;
+}
+
+/* Ant Design Form Styles */
+.antForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.antFormItem {
+  margin-bottom: 24px;
+}
+
+.antRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.antFormItemRow {
+  width: 100%;
+}
+
+.antCol {
+  position: relative;
+  max-width: 100%;
+  min-height: 1px;
+}
+
+.antFormItemControl {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0%;
+}
+
+.antFormItemControlInput {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+}
+
+.antFormItemControlInputContent {
+  flex: auto;
+  max-width: 100%;
+}
+
+.antInput {
+  font-size: 1rem;
+  padding: 12px 16px;
+  border: 1.5px solid #e6e6e6;
+  border-radius: 8px;
+  background: #fafbfc;
+  outline: none;
+  transition: border 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.antInput:focus {
+  border-color: #e6a481;
+  box-shadow: 0 0 0 2px rgba(230, 164, 129, 0.1);
+}
+
+.antInput::placeholder {
+  color: #999;
+}
+
+/* Phone Input Styles */
+.reactTelInput {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #fafbfc;
+  border: 1.5px solid #e6e6e6;
+  border-radius: 8px;
+  min-height: 50px;
+}
+
+.specialLabel {
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  background: #fafbfc;
+  padding: 0 4px;
+  font-size: 0.85rem;
+  color: #666;
+  z-index: 1;
+}
+
+.formControl {
+  flex: 1;
+  padding: 12px 16px 12px 90px;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  outline: none;
+}
+
+.flagDropdown {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.selectedFlag {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.flagSelect {
+  appearance: none;
+  background: transparent;
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.flag {
+  width: 20px;
+  height: 15px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 8px;
+}
+
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #666;
+  margin-left: 4px;
+}
+
+/* Textarea Styles */
+.antInputTextarea {
+  position: relative;
+}
+
+
+.antInputTextarea textarea {
+  min-height: 90px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+/* Button Styles */
+.antBtn {
+  display: inline-block;
+  font-weight: 600;
+  text-align: center;
+  border: 1px solid transparent;
+  padding: 13px 32px;
+  font-size: 1.08rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.antBtnDefault {
+  background: #e6a481;
+  color: #fff;
+  border-color: #e6a481;
+}
+
+.antBtnDefault:hover:not(:disabled) {
+  background: #d88c3c;
+  border-color: #d88c3c;
+}
+
+.antBtnDefault:disabled {
+  background: #f3d3b9;
+  border-color: #f3d3b9;
+  cursor: not-allowed;
+}
+
+/* Utility Classes */
+.mb3 {
+  margin-bottom: 24px;
+}
+
+.recaptchaPlaceholder {
+  padding: 20px;
+  background: #f5f5f5;
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+}
+
+.formRow {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.formField {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.formField label {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+.formField input,
+.formField .react-phone-input,
+.formField .react-tel-input input {
+  font-size: 1rem;
+  padding: 10px 12px;
+  border: 1.5px solid #e6e6e6;
+  border-radius: 7px;
+  background: #fafbfc;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.formField input:focus,
+.formField .react-tel-input input:focus {
+  border-color: #e6a481;
+}
+
+.formFieldFull {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 22px;
+}
+
+.formFieldFull label {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+.formFieldFull textarea {
+  font-size: 1rem;
+  padding: 12px 14px;
+  border: 1.5px solid #e6e6e6;
+  border-radius: 7px;
+  background: #fafbfc;
+  min-height: 90px;
+  resize: vertical;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.formFieldFull textarea:focus {
+  border-color: #e6a481;
+}
+
+.submitBtnNew {
+  margin-top: 10px;
+  background: #e6a481;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.08rem;
+  border: none;
+  border-radius: 7px;
+  padding: 13px 0;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(230,164,129,0.08);
+}
+
+.submitBtnNew:disabled {
+  background: #f3d3b9;
+  cursor: not-allowed;
+}
+
+.submitBtnNew:hover:not(:disabled) {
+  background: #d88c3c;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 0.93rem;
+  margin-top: 3px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .colLg6, .colMd6, .colSm12, .col12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .aSide {
+    padding-right: 0;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  
+  .aSide h1 {
+    font-size: 2rem;
+  }
+  
+  .aSide h2 {
+    font-size: 1.3rem;
+  }
+  
+  .cardBody {
+    padding: 30px 20px;
+  }
+  
+  .headerSection {
+    padding: 40px 0;
+  }
+  
+  .container {
+    padding: 0 15px;
+  }
+  
+  .playstoreIcon {
+    width: 130px;
+  }
+}
+
+@media (max-width: 480px) {
+  .aSide h1 {
+    font-size: 1.8rem;
+  }
+  
+  .cardBody {
+    padding: 25px 15px;
+  }
+  
+  .playstoreIcon {
+    width: 120px;
+  }
+  
+  .contentStartAligned {
+    justify-content: center;
+  }
+}
+
+/* React Tel Input Styles */
+.formField .react-tel-input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #fafbfc;
+  border-radius: 7px;
+  border: 1.5px solid #e6e6e6;
+  min-height: 42px;
+  height: 42px;
+  box-sizing: border-box;
+}
+
+.formField .react-tel-input .form-control {
+  width: 100%;
+  min-height: 42px;
+  height: 42px;
+  padding: 10px 12px 10px 48px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  font-family: inherit;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.formField .react-tel-input .form-control:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.formField .react-tel-input .flag-dropdown {
+  border: none;
+  background: transparent;
+  border-radius: 7px 0 0 7px;
+  height: 42px;
+  box-sizing: border-box;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 8px 0 0;
+}
+
+.formField .react-tel-input .selected-flag {
+  height: 42px;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 700px) {
+  .formField .react-tel-input,
+  .formField .react-tel-input .form-control,
+  .formField .react-tel-input .flag-dropdown,
+  .formField .react-tel-input .selected-flag {
+    min-height: 38px;
+    height: 38px;
+  }
+}
+
+/* Add global box-sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Services from "./components/Services";
@@ -21,6 +21,8 @@ import EducationalInstitute from "./components/educationalInstitute";
 import ContactDropdown from "./components/ContactDropdown";
 import NavigationBar from "./components/NavigationBar";
 import FeaturedInSection from "./components/FeaturedInSection";
+import DemoRequestForm from "./components/mainDemoReqForm";
+import Notification from "./components/Notification";
 
 function getActiveTab(location) {
   if (location.pathname === '/') {
@@ -39,7 +41,9 @@ function MainApp() {
   const navigate = useNavigate();
   const location = useLocation();
   const activeTab = getActiveTab(location);
+  const formRef = useRef(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
 
   const handleAnchorClick = (e) => {
     e.preventDefault();
@@ -57,6 +61,24 @@ function MainApp() {
       navigate(href);
     }
   };
+  const handleFormSubmitSuccess = () => {
+    setShowNotification(true);
+  };
+
+  const handleFormSubmitError = (error) => {
+    // Handle error if needed
+    console.error('Form submission error:', error);
+  };
+
+  // Handle notification timeout
+  useEffect(() => {
+    if (showNotification) {
+      const timer = setTimeout(() => {
+        setShowNotification(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showNotification]);
 
   // Scroll to section on hash change
   useEffect(() => {
@@ -77,6 +99,13 @@ function MainApp() {
 
   return (
     <div className={styles.app}>
+      {showNotification && (
+        <Notification
+          message="Thank you! We will contact you soon."
+          onClose={() => setShowNotification(false)}
+          duration={3000}
+        />
+      )}
       <NavigationBar>
         <li>
           <Link
@@ -119,6 +148,13 @@ function MainApp() {
         { src: "/assets/gulf-news-logo.png", alt: "Gulf News" }
       ]} />
       <PricingFAQ />
+      <div className={styles.container}>
+        <DemoRequestForm 
+          formRef={formRef}
+          onSubmitSuccess={handleFormSubmitSuccess}
+          onSubmitError={handleFormSubmitError}
+        />
+      </div>
       <MeetupSection />
       </div>
       <Footer />
