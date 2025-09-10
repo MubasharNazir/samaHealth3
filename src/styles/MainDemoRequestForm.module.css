@@ -422,6 +422,36 @@
   margin-top: 3px;
 }
 
+/* Newsletter checkbox styles */
+.checkboxLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.checkboxInput {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: #e6a683;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.checkboxText {
+  flex: 1;
+  user-select: none;
+}
+
+.checkboxLabel:hover .checkboxText {
+  color: #333;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .colLg6, .colMd6, .colSm12, .col12 {

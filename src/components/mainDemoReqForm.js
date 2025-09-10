@@ -90,6 +90,19 @@ const initialState = {
   countryCode: countryCodes[0].code,
   phoneNumber: '',
   message: '',
+  subscribeToNewsletter: false,
+};
+
+// Google Forms configuration using environment variables
+const GOOGLE_FORM_CONFIG = {
+  url: process.env.REACT_APP_GOOGLE_FORM_URL || 'https://docs.google.com/forms/d/e/1FAIpQLScOlgM_pPlHgZIVUeAYsVhIwnSzKrkdzEUok-l9Uv29isnuhA/formResponse',
+  fields: {
+    name: process.env.REACT_APP_GOOGLE_FORM_NAME || 'entry.1692151611',
+    email: process.env.REACT_APP_GOOGLE_FORM_EMAIL || 'entry.489425825',
+    mobile: process.env.REACT_APP_GOOGLE_FORM_PHONE || 'entry.1292311228',
+    message: process.env.REACT_APP_GOOGLE_FORM_MESSAGE || 'entry.2062770081',
+    newsletter: process.env.REACT_APP_GOOGLE_FORM_NEWSLETTER || 'entry.225066364'
+  }
 };
 
 export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRef }) {
@@ -110,12 +123,16 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
   };
 
   const handleChange = e => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setForm(prev => {
       if (name === 'countryCode' || name === 'phoneNumber') {
         const newForm = { ...prev, [name]: value };
         newForm.mobile = `${newForm.countryCode}${newForm.phoneNumber}`;
         return newForm;
+      }
+      // Handle checkbox inputs
+      if (type === 'checkbox') {
+        return { ...prev, [name]: checked };
       }
       return { ...prev, [name]: value };
     });
@@ -131,6 +148,27 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
 
   const handleRecaptchaExpired = () => {
     setRecaptchaValue(null);
+  };
+
+  const submitToGoogleForm = async (formData) => {
+    try {
+      const formBody = new FormData();
+      formBody.append(GOOGLE_FORM_CONFIG.fields.name, formData.name);
+      formBody.append(GOOGLE_FORM_CONFIG.fields.email, formData.email);
+      formBody.append(GOOGLE_FORM_CONFIG.fields.mobile, formData.mobile);
+      formBody.append(GOOGLE_FORM_CONFIG.fields.message, formData.message);
+      formBody.append(GOOGLE_FORM_CONFIG.fields.newsletter, formData.subscribeToNewsletter ? 'Yes' : 'No');
+
+      await fetch(GOOGLE_FORM_CONFIG.url, {
+        method: 'POST',
+        mode: 'no-cors', // Important: Google Forms requires no-cors
+        body: formBody
+      });
+      return true;
+    } catch (error) {
+      console.error('Google Form submission error:', error);
+      return false;
+    }
   };
 
   const handleSubmit = async e => {
@@ -149,23 +187,46 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
     } 
     
     setSubmitting(true);
+    
     try {
-      await emailjs.send(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID,
-        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-        {
-          message: `New Demo Request\n\n| Field     | Value                  |\n|-----------|------------------------|\n| Name      | ${form.name}           |\n| Email     | ${form.email}          |\n| Mobile    | ${form.mobile}         |\n| Message   | ${form.message}        |\n\nRegards,\nSama Health Website`,
-          to_email: process.env.REACT_APP_EMAILJS_TO_EMAIL || 'engr.mubasharnazir@gmail.com',
-        },
-        process.env.REACT_APP_EMAILJS_USER_ID
-      );
-      setForm(initialState);
-      setRecaptchaValue(null);
-      if (recaptchaRef.current) {
-        recaptchaRef.current.reset();
-      }
-      if (onSubmitSuccess) {
-        onSubmitSuccess();
+      // Submit to both EmailJS and Google Forms simultaneously
+      const [emailResult, googleFormResult] = await Promise.allSettled([
+        emailjs.send(
+          process.env.REACT_APP_EMAILJS_SERVICE_ID,
+          process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+          {
+            message: `New Demo Request\n\n| Field              | Value                  |\n|--------------------|------------------------|\n| Name               | ${form.name}           |\n| Email              | ${form.email}          |\n| Mobile             | ${form.mobile}         |\n| Message            | ${form.message}        |\n| Newsletter Signup  | ${form.subscribeToNewsletter ? 'Yes' : 'No'} |\n\nRegards,\nSama Health Website`,
+            to_email: process.env.REACT_APP_EMAILJS_TO_EMAIL || 'engr.mubasharnazir@gmail.com',
+          },
+          process.env.REACT_APP_EMAILJS_USER_ID
+        ),
+        submitToGoogleForm(form)
+      ]);
+
+      // Check if at least one submission succeeded
+      const emailSuccess = emailResult.status === 'fulfilled';
+      const googleFormSuccess = googleFormResult.status === 'fulfilled' && googleFormResult.value;
+
+      if (emailSuccess || googleFormSuccess) {
+        // Success if either submission worked
+        setForm(initialState);
+        setRecaptchaValue(null);
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
+        if (onSubmitSuccess) {
+          onSubmitSuccess();
+        }
+
+        // Log any partial failures for debugging
+        if (!emailSuccess) {
+          console.warn('Email submission failed:', emailResult.reason);
+        }
+        if (!googleFormSuccess) {
+          console.warn('Google Form submission failed');
+        }
+      } else {
+        throw new Error('Both email and Google Form submissions failed');
       }
     } catch (err) {
       const submitError = 'Failed to send. Please try again.';
@@ -174,6 +235,7 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
         onSubmitError(submitError);
       }
     }
+    
     setSubmitting(false);
   };
 
@@ -324,6 +386,29 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
                                 onChange={handleChange}
                               />
                             </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={styles.antFormItem}>
+                    <div className={`${styles.antRow} ${styles.antFormItemRow}`}>
+                      <div className={`${styles.antCol} ${styles.antFormItemControl}`}>
+                        <div className={styles.antFormItemControlInput}>
+                          <div className={styles.antFormItemControlInputContent}>
+                            <label className={styles.checkboxLabel}>
+                              <input 
+                                type="checkbox" 
+                                name="subscribeToNewsletter"
+                                checked={form.subscribeToNewsletter}
+                                onChange={handleChange}
+                                className={styles.checkboxInput}
+                              />
+                              <span className={styles.checkboxText}>
+                                Subscribe to our newsletter
+                              </span>
+                            </label>
                           </div>
                         </div>
                       </div>

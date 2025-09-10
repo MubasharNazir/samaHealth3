@@ -94,6 +94,24 @@ const initialState = {
   message: '',
 };
 
+// Google Forms configuration - will be updated once you add the new fields
+const GOOGLE_FORM_CONFIG = {
+  url: process.env.REACT_APP_GOOGLE_FORM_URL || 'https://docs.google.com/forms/d/e/1FAIpQLScOlgM_pPlHgZIVUeAYsVhIwnSzKrkdzEUok-l9Uv29isnuhA/formResponse',
+  fields: {
+    // Using environment variables with fallback values
+    firstName: process.env.REACT_APP_GOOGLE_FORM_NAME || 'entry.1692151611',
+    lastName: process.env.REACT_APP_GOOGLE_FORM_LASTNAME || 'entry.1296165951',
+    email: process.env.REACT_APP_GOOGLE_FORM_EMAIL || 'entry.489425825',
+    mobile: process.env.REACT_APP_GOOGLE_FORM_PHONE || 'entry.1292311228',
+    message: process.env.REACT_APP_GOOGLE_FORM_MESSAGE || 'entry.2062770081',
+    company: process.env.REACT_APP_GOOGLE_FORM_COMPANY || 'entry.342428412',
+    employees: process.env.REACT_APP_GOOGLE_FORM_EMPLOYEES || 'entry.1696141046',
+    industry: process.env.REACT_APP_GOOGLE_FORM_INDUSTRY || 'entry.1536244354',
+    location: process.env.REACT_APP_GOOGLE_FORM_LOCATION || 'entry.468684175',
+    newsletter: process.env.REACT_APP_GOOGLE_FORM_NEWSLETTER || 'entry.225066364'
+  }
+};
+
 export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRef }) {
   const [form, setForm] = useState(initialState);
   const [errors, setErrors] = useState({});
@@ -125,6 +143,50 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
     });
   };
 
+  const submitToGoogleForm = async (formData) => {
+    try {
+      // Debug: Log the form data being submitted
+      console.log('Demo Form data being submitted:', formData);
+      
+      const formBody = new FormData();
+      // Submit all form data to corresponding Google Form fields
+      formBody.append(GOOGLE_FORM_CONFIG.fields.firstName, formData.firstName);
+      formBody.append(GOOGLE_FORM_CONFIG.fields.lastName, formData.lastName);
+      formBody.append(GOOGLE_FORM_CONFIG.fields.email, formData.email);
+      formBody.append(GOOGLE_FORM_CONFIG.fields.mobile, formData.mobile);
+      formBody.append(GOOGLE_FORM_CONFIG.fields.message, formData.message);
+      formBody.append(GOOGLE_FORM_CONFIG.fields.company, formData.company);
+      formBody.append(GOOGLE_FORM_CONFIG.fields.employees, formData.employees);
+      formBody.append(GOOGLE_FORM_CONFIG.fields.industry, formData.industry);
+      formBody.append(GOOGLE_FORM_CONFIG.fields.location, formData.location);
+      formBody.append(GOOGLE_FORM_CONFIG.fields.newsletter, 'No'); // Demo form doesn't have newsletter signup
+
+      // Debug: Log what's being sent to Google Forms
+      console.log('Submitting Demo Form to Google Forms with fields:', {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        mobile: formData.mobile,
+        message: formData.message,
+        company: formData.company,
+        employees: formData.employees,
+        industry: formData.industry,
+        location: formData.location,
+        newsletter: 'No'
+      });
+
+      await fetch(GOOGLE_FORM_CONFIG.url, {
+        method: 'POST',
+        mode: 'no-cors', // Important: Google Forms requires no-cors
+        body: formBody
+      });
+      return true;
+    } catch (error) {
+      console.error('Google Form submission error:', error);
+      return false;
+    }
+  };
+
   const handleSubmit = async e => {
     e.preventDefault();
     const errs = validate();
@@ -141,19 +203,42 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
     } 
     
     setSubmitting(true);
+    
     try {
-      await emailjs.send(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID,
-        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-        {
-          message: `New Demo Request\n\n| Field     | Value                  |\n|-----------|------------------------|\n| Name      | ${form.firstName} ${form.lastName} |\n| Email     | ${form.email}          |\n| Mobile    | ${form.mobile}         |\n| Company   | ${form.company}        |\n| Employees | ${form.employees}      |\n| Industry  | ${form.industry}       |\n| Location  | ${form.location}       |\n| Message   | ${form.message}        |\n\nRegards,\nSama Health Website`,
-          to_email: process.env.REACT_APP_EMAILJS_TO_EMAIL || 'engr.mubasharnazir@gmail.com',
-        },
-        process.env.REACT_APP_EMAILJS_USER_ID
-      );
-      setForm(initialState);
-      if (onSubmitSuccess) {
-        onSubmitSuccess();
+      // Submit to both EmailJS and Google Forms simultaneously
+      const [emailResult, googleFormResult] = await Promise.allSettled([
+        emailjs.send(
+          process.env.REACT_APP_EMAILJS_SERVICE_ID,
+          process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+          {
+            message: `New Demo Request\n\n| Field     | Value                  |\n|-----------|------------------------|\n| Name      | ${form.firstName} ${form.lastName} |\n| Email     | ${form.email}          |\n| Mobile    | ${form.mobile}         |\n| Company   | ${form.company}        |\n| Employees | ${form.employees}      |\n| Industry  | ${form.industry}       |\n| Location  | ${form.location}       |\n| Message   | ${form.message}        |\n\nRegards,\nSama Health Website`,
+            to_email: process.env.REACT_APP_EMAILJS_TO_EMAIL || 'engr.mubasharnazir@gmail.com',
+          },
+          process.env.REACT_APP_EMAILJS_USER_ID
+        ),
+        submitToGoogleForm(form)
+      ]);
+
+      // Check if at least one submission succeeded
+      const emailSuccess = emailResult.status === 'fulfilled';
+      const googleFormSuccess = googleFormResult.status === 'fulfilled' && googleFormResult.value;
+
+      if (emailSuccess || googleFormSuccess) {
+        // Success if either submission worked
+        setForm(initialState);
+        if (onSubmitSuccess) {
+          onSubmitSuccess();
+        }
+
+        // Log any partial failures for debugging
+        if (!emailSuccess) {
+          console.warn('Demo Form email submission failed:', emailResult.reason);
+        }
+        if (!googleFormSuccess) {
+          console.warn('Demo Form Google Form submission failed');
+        }
+      } else {
+        throw new Error('Both email and Google Form submissions failed');
       }
     } catch (err) {
       const submitError = 'Failed to send. Please try again.';
@@ -162,6 +247,7 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
         onSubmitError(submitError);
       }
     }
+    
     setSubmitting(false);
   };
 
