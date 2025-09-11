@@ -406,7 +406,7 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
                                 className={styles.checkboxInput}
                               />
                               <span className={styles.checkboxText}>
-                                Subscribe to our newsletter
+                              I would like to receive the newsletter.
                               </span>
                             </label>
                           </div>
