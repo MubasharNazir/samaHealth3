@@ -15,7 +15,7 @@ const logos = [
   { src: "/assets/arabia.png", alt: "Arabia" },
   { src: "/assets/khaleej-times-logo.svg", alt: "Khaleej Times" },
   { src: "/assets/edge.webp", alt: "Edge" },
-  { src: "/assets/gulf-news-logo.png", alt: "Gulf News" }
+  { src: "/assets/gulf-news-", alt: "Gulf News" }
 ];
 
 function getActiveTab(location) {
