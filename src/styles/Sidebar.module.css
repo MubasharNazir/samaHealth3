@@ -1,3 +1,22 @@
+.therapistPortalBtn {
+  background: #444e2c;
+  color: #fff;
+  font-size: 1.13rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 7px;
+  padding: 0.9rem 0;
+  text-align: center;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.18s;
+  box-shadow: 0 2px 8px rgba(68,78,44,0.08);
+  display: block;
+}
+.therapistPortalBtn:hover {
+  background: #5a6b3a;
+}
 .sidebarOverlay {
   position: fixed;
   top: 0;
