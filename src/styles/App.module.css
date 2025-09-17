@@ -51,9 +51,20 @@
   border-bottom: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 1.2rem 6rem;
+  justify-content: center;
+  padding: 0; /* move padding to inner for consistent centering */
   box-shadow: 0 2px 8px rgba(30, 60, 90, 0.03);
+}
+
+.navInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1200px; /* match heroInner */
+  padding: 1.2rem 6rem; /* match hero large side padding */
+  box-sizing: border-box;
 }
 
 .logo {
@@ -159,8 +170,15 @@
   transition: background 0.18s;
 }
 
+/* Match hero breakpoints for side gutters */
+@media (max-width: 1024px) {
+  .navInner {
+    padding: 1rem 1.5rem; /* hero uses 2rem 1.5rem */
+  }
+}
+
 @media (max-width: 900px) {
-  .navbar {
+  .navInner {
     padding: 1rem 1.2rem;
   }
   .logo {
@@ -179,5 +197,17 @@
   }
   .hamburger {
     display: flex;
+  }
+}
+
+@media (max-width: 768px) {
+  .navInner {
+    padding: 1rem 1rem; /* hero uses 2rem 1rem */
+  }
+}
+
+@media (max-width: 480px) {
+  .navInner {
+    padding: 1rem 1rem; /* hero uses 1.5rem 1rem */
   }
 } 

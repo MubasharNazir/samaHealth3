@@ -68,7 +68,7 @@ const Hero = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 2rem 1rem;
+          padding: 0; /* gutters handled by inner to match navbar */
           box-sizing: border-box;
         }
 
@@ -79,6 +79,8 @@ const Hero = () => {
           gap: 3rem;
           align-items: center;
           justify-content: space-between;
+          padding: 2rem 6rem; /* match navbar large gutters */
+          box-sizing: border-box;
         }
 
         .heroLeft {
@@ -156,14 +158,10 @@ const Hero = () => {
 
         /* Tablet styles */
         @media (max-width: 1024px) {
-          .hero {
-            padding: 2rem 1.5rem;
-          }
-          
           .heroInner {
             gap: 2rem;
+            padding: 2rem 1.5rem; /* match navbar 1.5rem */
           }
-          
           .heroImgSingle {
             max-width: 280px;
             min-width: 220px;
@@ -172,26 +170,19 @@ const Hero = () => {
 
         /* Mobile landscape and smaller tablets */
         @media (max-width: 768px) {
-          .hero {
-            min-height: auto;
-            padding: 2rem 1rem;
-          }
-          
           .heroInner {
             flex-direction: column;
             gap: 2rem;
             text-align: center;
+            padding: 2rem 1rem; /* match navbar 1rem */
           }
-          
           .heroLeft {
             max-width: 100%;
           }
-          
           .heroRightSingle {
             order: -1;
             max-width: 100%;
           }
-          
           .heroImgSingle {
             max-width: 250px;
             min-width: 200px;
@@ -200,28 +191,20 @@ const Hero = () => {
 
         /* Mobile portrait */
         @media (max-width: 480px) {
-          .hero {
-            padding: 1.5rem 1rem;
-            min-height: auto;
-          }
-          
           .heroInner {
             gap: 1.5rem;
+            padding: 1.5rem 1rem; /* keep consistent with navbar */
           }
-          
           .downloadSection {
             margin-top: 1rem;
           }
-          
           .storeIcons {
             justify-content: center;
             gap: 0.8rem;
           }
-          
           .storeBtnImg {
             height: 40px;
           }
-          
           .heroImgSingle {
             max-width: 220px;
             min-width: 180px;
@@ -231,25 +214,19 @@ const Hero = () => {
 
         /* Extra small devices */
         @media (max-width: 360px) {
-          .hero {
-            padding: 1rem 0.5rem;
-          }
-          
           .heroInner {
             gap: 1rem;
+            padding: 1rem 0.5rem;
           }
-          
           .heroImgSingle {
             max-width: 200px;
             min-width: 160px;
           }
-          
           .storeIcons {
             flex-direction: column;
             gap: 0.5rem;
             align-items: center;
           }
-          
           .storeBtnImg {
             height: 36px;
           }
