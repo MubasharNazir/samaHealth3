@@ -23,6 +23,7 @@ import NavigationBar from "./components/NavigationBar";
 import FeaturedInSection from "./components/FeaturedInSection";
 import DemoRequestForm from "./components/mainDemoReqForm";
 import Notification from "./components/Notification";
+ import AppRedirect from './AppRedirect';
 
 function getActiveTab(location) {
   if (location.pathname === '/') {
@@ -165,6 +166,7 @@ function MainApp() {
 const App = () => (
   <Router>
     <Routes>
+      <Route path="/app" element={<AppRedirect />} />
       <Route path="/" element={<MainApp />} />
       <Route path="/book-call" element={<ContactForm />} />
       <Route path="/for-educational-institutes" element={<EducationalInstitute />} />
