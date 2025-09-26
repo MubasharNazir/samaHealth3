@@ -1,0 +1,21 @@
+export default function handler(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  
+  const data = [
+    {
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.sama.health_life",
+        "sha256_cert_fingerprints": [
+          "76:70:1D:FC:C9:71:EB:5A:C1:C4:46:43:1F:13:91:94:B8:B3:11:E7:90:ED:BB:D4:C8:25:C8:CC:87:82:77:86",
+          "C1:B7:B4:98:7E:AB:9D:46:39:A3:92:5D:50:75:2F:20:A3:8F:43:93:D2:5B:0D:9B:70:C6:11:50:AC:F9:DB:DB",
+          "1B:AA:17:90:AF:2D:96:33:04:23:EC:7B:91:C0:E4:7C:89:BA:D3:9C:68:44:73:0C:51:E9:8D:34:5C:AC:21:99"
+        ]
+      }
+    }
+  ];
+  
+  res.status(200).json(data);
+}
