@@ -33,9 +33,45 @@
 
 // export default Hero; 
 
+// 
 import React from 'react';
 
 const Hero = () => {
+  const handleAppStoreClick = (e, platform) => {
+    e.preventDefault();
+    
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    const isAndroid = /Android/.test(navigator.userAgent);
+    
+    if (platform === 'ios' && isIOS) {
+      // Try to open the app first with your custom URL scheme
+      window.location.href = 'samahealth://profile/';
+      
+      // Fallback to App Store after a short delay if app doesn't open
+      setTimeout(() => {
+        window.location.href = 'https://apps.apple.com/ae/app/sama-health/id6447992708';
+      }, 2000);
+      
+    } else if (platform === 'android' && isAndroid) {
+      // Use Android Intent URL for smart app opening
+      const intentUrl = 'intent://profile/#Intent;' +
+        'scheme=samahealth;' +
+        'package=com.sama.health_life;' +
+        'S.browser_fallback_url=https://play.google.com/store/apps/details?id=com.sama.health_life&pcampaignid=web_share;' +
+        'end';
+      
+      window.location.href = intentUrl;
+      
+    } else {
+      // Default behavior for non-mobile or mismatched platforms
+      if (platform === 'ios') {
+        window.open('https://apps.apple.com/ae/app/sama-health/id6447992708', '_blank');
+      } else {
+        window.open('https://play.google.com/store/apps/details?id=com.sama.health_life&pcampaignid=web_share', '_blank');
+      }
+    }
+  };
+
   return (
     <section className="hero" id="hero">
       <div className="heroInner">
@@ -47,10 +83,18 @@ const Hero = () => {
           <div className="downloadSection">
             <div className="downloadHeading">Where your story is understood — Download Sama Health.</div>
             <div className="storeIcons">
-              <a href="https://apps.apple.com/ae/app/sama-health/id6447992708" target="_blank" rel="noopener noreferrer">
+              <a 
+                href="https://apps.apple.com/ae/app/sama-health/id6447992708" 
+                onClick={(e) => handleAppStoreClick(e, 'ios')}
+                rel="noopener noreferrer"
+              >
                 <img src="/assets/apple.svg" alt="App Store" className="storeBtnImg" />
               </a>
-              <a href="https://play.google.com/store/apps/details?id=com.sama.health_life&pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
+              <a 
+                href="https://play.google.com/store/apps/details?id=com.sama.health_life&pcampaignid=web_share" 
+                onClick={(e) => handleAppStoreClick(e, 'android')}
+                rel="noopener noreferrer"
+              >
                 <img src="/assets/playstore.svg" alt="Google Play" className="storeBtnImg" />
               </a>
             </div>
@@ -131,6 +175,7 @@ const Hero = () => {
           display: block;
           border-radius: 8px;
           transition: transform 0.2s ease;
+          cursor: pointer;
         }
 
         .storeIcons a:hover .storeBtnImg {
