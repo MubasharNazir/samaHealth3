@@ -1,4 +1,14 @@
 {
+  "rewrites": [
+    {
+      "source": "/.well-known/apple-app-site-association",
+      "destination": "/.well-known/apple-app-site-association"
+    },
+    {
+      "source": "/.well-known/assetlinks.json",
+      "destination": "/.well-known/assetlinks.json"
+    }
+  ],
   "headers": [
     {
       "source": "/.well-known/apple-app-site-association",
