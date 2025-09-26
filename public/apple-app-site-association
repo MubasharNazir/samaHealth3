@@ -1,0 +1,10 @@
+{
+	"applinks": {
+		"details": [
+			{
+				"appID": "F36MX4S9UW.com.samahealth.life",
+				"paths": ["/profile/*"]
+			}
+		]
+	}
+}
