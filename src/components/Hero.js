@@ -34,41 +34,115 @@
 // export default Hero; 
 
 // 
+// import React from 'react';
+
+// const Hero = () => {
+//   const handleAppStoreClick = (e, platform) => {
+//     e.preventDefault();
+    
+//     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+//     const isAndroid = /Android/.test(navigator.userAgent);
+    
+//     if (platform === 'ios' && isIOS) {
+//       // Try to open the app first with your custom URL scheme
+//       window.location.href = 'samahealth://profile/';
+      
+//       // Fallback to App Store after a short delay if app doesn't open
+//       setTimeout(() => {
+//         window.location.href = 'https://apps.apple.com/ae/app/sama-health/id6447992708';
+//       }, 2000);
+      
+//     } else if (platform === 'android' && isAndroid) {
+//       // Use Android Intent URL for smart app opening
+//       const intentUrl = 'intent://profile/#Intent;' +
+//         'scheme=samahealth;' +
+//         'package=com.sama.health_life;' +
+//         'S.browser_fallback_url=https://play.google.com/store/apps/details?id=com.sama.health_life&pcampaignid=web_share;' +
+//         'end';
+      
+//       window.location.href = intentUrl;
+      
+//     } else {
+//       // Default behavior for non-mobile or mismatched platforms
+//       if (platform === 'ios') {
+//         window.open('https://apps.apple.com/ae/app/sama-health/id6447992708', '_blank');
+//       } else {
+//         window.open('https://play.google.com/store/apps/details?id=com.sama.health_life&pcampaignid=web_share', '_blank');
+//       }
+//     }
+//   };
+
+//   return (
+//     <section className="hero" id="hero">
+//       <div className="heroInner">
+//         <div className="heroLeft">
+//           <h1>In our communities, silence is survival. At Sama Health, healing begins with being heard.</h1>
+//           <div className="heroDescHighlight">
+//             Access qualified therapists that you can deeply connect with. We offer a curated offering for the South Asian community.
+//           </div>
+//           <div className="downloadSection">
+//             <div className="downloadHeading">Where your story is understood — Download Sama Health.</div>
+//             <div className="storeIcons">
+//               <a 
+//                 href="https://apps.apple.com/ae/app/sama-health/id6447992708" 
+//                 onClick={(e) => handleAppStoreClick(e, 'ios')}
+//                 rel="noopener noreferrer"
+//               >
+//                 <img src="/assets/apple.svg" alt="App Store" className="storeBtnImg" />
+//               </a>
+//               <a 
+//                 href="https://play.google.com/store/apps/details?id=com.sama.health_life&pcampaignid=web_share" 
+//                 onClick={(e) => handleAppStoreClick(e, 'android')}
+//                 rel="noopener noreferrer"
+//               >
+//                 <img src="/assets/playstore.svg" alt="Google Play" className="storeBtnImg" />
+//               </a>
+//             </div>
+//           </div>
+//         </div>
+//         <div className="heroRightSingle">
+//           <img src="/assets/hero.png" alt="Android App" className="heroImgSingle" />
+//         </div>
+//       </div>
 import React from 'react';
 
 const Hero = () => {
   const handleAppStoreClick = (e, platform) => {
-    e.preventDefault();
-    
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-    const isAndroid = /Android/.test(navigator.userAgent);
-    
-    if (platform === 'ios' && isIOS) {
-      // Try to open the app first with your custom URL scheme
-      window.location.href = 'samahealth://profile/';
-      
-      // Fallback to App Store after a short delay if app doesn't open
+    e.preventDefault(); // stop default link behavior
+
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const isIOS = /iPad|iPhone|iPod/.test(userAgent);
+    const isAndroid = /Android/.test(userAgent);
+
+    const appScheme = "samahealth://profile";
+    const appStoreURL = "https://apps.apple.com/ae/app/sama-health/id6447992708";
+    const playStoreURL = "https://play.google.com/store/apps/details?id=com.sama.health_life&pcampaignid=web_share";
+
+    // ✅ Handle iOS
+    if (platform === "ios" && isIOS) {
+      window.location.href = appScheme; // try opening the app
+
+      // Fallback to App Store if app not installed
       setTimeout(() => {
-        window.location.href = 'https://apps.apple.com/ae/app/sama-health/id6447992708';
-      }, 2000);
-      
-    } else if (platform === 'android' && isAndroid) {
-      // Use Android Intent URL for smart app opening
-      const intentUrl = 'intent://profile/#Intent;' +
-        'scheme=samahealth;' +
-        'package=com.sama.health_life;' +
-        'S.browser_fallback_url=https://play.google.com/store/apps/details?id=com.sama.health_life&pcampaignid=web_share;' +
-        'end';
-      
+        window.location.href = appStoreURL;
+      }, 1500);
+    }
+
+    // ✅ Handle Android
+    else if (platform === "android" && isAndroid) {
+      const intentUrl = `intent://profile/#Intent;
+        scheme=samahealth;
+        package=com.sama.health_life;
+        S.browser_fallback_url=${encodeURIComponent(playStoreURL)};
+        end`;
+
       window.location.href = intentUrl;
-      
-    } else {
-      // Default behavior for non-mobile or mismatched platforms
-      if (platform === 'ios') {
-        window.open('https://apps.apple.com/ae/app/sama-health/id6447992708', '_blank');
-      } else {
-        window.open('https://play.google.com/store/apps/details?id=com.sama.health_life&pcampaignid=web_share', '_blank');
-      }
+    }
+
+    // ✅ Handle Desktop or other devices
+    else {
+      const fallbackURL = platform === "ios" ? appStoreURL : playStoreURL;
+      window.open(fallbackURL, "_blank");
     }
   };
 
@@ -76,34 +150,60 @@ const Hero = () => {
     <section className="hero" id="hero">
       <div className="heroInner">
         <div className="heroLeft">
-          <h1>In our communities, silence is survival. At Sama Health, healing begins with being heard.</h1>
+          <h1>
+            In our communities, silence is survival. At Sama Health, healing begins with being heard.
+          </h1>
+
           <div className="heroDescHighlight">
             Access qualified therapists that you can deeply connect with. We offer a curated offering for the South Asian community.
           </div>
+
           <div className="downloadSection">
-            <div className="downloadHeading">Where your story is understood — Download Sama Health.</div>
+            <div className="downloadHeading">
+              Where your story is understood — Download Sama Health.
+            </div>
+
             <div className="storeIcons">
-              <a 
-                href="https://apps.apple.com/ae/app/sama-health/id6447992708" 
-                onClick={(e) => handleAppStoreClick(e, 'ios')}
+              {/* iOS Button */}
+              <a
+                href="#"
+                onClick={(e) => handleAppStoreClick(e, "ios")}
                 rel="noopener noreferrer"
               >
-                <img src="/assets/apple.svg" alt="App Store" className="storeBtnImg" />
+                <img
+                  src="/assets/apple.svg"
+                  alt="App Store"
+                  className="storeBtnImg"
+                />
               </a>
-              <a 
-                href="https://play.google.com/store/apps/details?id=com.sama.health_life&pcampaignid=web_share" 
-                onClick={(e) => handleAppStoreClick(e, 'android')}
+
+              {/* Android Button */}
+              <a
+                href="#"
+                onClick={(e) => handleAppStoreClick(e, "android")}
                 rel="noopener noreferrer"
               >
-                <img src="/assets/playstore.svg" alt="Google Play" className="storeBtnImg" />
+                <img
+                  src="/assets/playstore.svg"
+                  alt="Google Play"
+                  className="storeBtnImg"
+                />
               </a>
             </div>
           </div>
         </div>
+
         <div className="heroRightSingle">
-          <img src="/assets/hero.png" alt="Android App" className="heroImgSingle" />
+          <img
+            src="/assets/hero.png"
+            alt="Sama Health App"
+            className="heroImgSingle"
+          />
         </div>
       </div>
+  
+ 
+
 
       <style jsx>{`
         .hero {
