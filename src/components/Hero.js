@@ -129,15 +129,19 @@ const Hero = () => {
     }
 
     // ✅ Handle Android
-    else if (platform === "android" && isAndroid) {
-      const intentUrl = `intent://profile/#Intent;
-        scheme=samahealth;
-        package=com.sama.health_life;
-        S.browser_fallback_url=${encodeURIComponent(playStoreURL)};
-        end`;
+    // else if (platform === "android" && isAndroid) {
+    //   const intentUrl = `intent://profile/#Intent;
+    //     scheme=samahealth;
+    //     package=com.sama.health_life;
+    //     S.browser_fallback_url=${encodeURIComponent(playStoreURL)};
+    //     end`;
 
-      window.location.href = intentUrl;
-    }
+    //   window.location.href = intentUrl;
+    // }
+    else if (platform === "android" && isAndroid) {
+  const intentUrl = `intent://profile/#Intent;scheme=samahealth;package=com.sama.health_life;S.browser_fallback_url=${encodeURIComponent(playStoreURL)};end`;
+  window.location.href = intentUrl;
+}
 
     // ✅ Handle Desktop or other devices
     else {
