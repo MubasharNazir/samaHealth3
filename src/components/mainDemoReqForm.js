@@ -187,91 +187,7 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
     } 
     
     setSubmitting(true);
-    const message = `<!DOCTYPE html>
-    <html>
-    <head>
-      <meta charset="UTF-8" />
-      <style>
-        body {
-          font-family: Arial, sans-serif;
-          background-color: #f4f6f8;
-          margin: 0;
-          padding: 0;
-        }
-        .email-container {
-          max-width: 600px;
-          margin: 20px auto;
-          background: #ffffff;
-          border: 1px solid #e0e0e0;
-          border-radius: 8px;
-          padding: 20px;
-        }
-        .email-header {
-          font-size: 20px;
-          font-weight: bold;
-          margin-bottom: 20px;
-          text-align: center;
-          color: #2c3e50;
-          border-bottom: 2px solid #3498db;
-          padding-bottom: 10px;
-        }
-        table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-        td {
-          padding: 10px;
-          border: 1px solid #ddd;
-          vertical-align: top;
-        }
-        td.label {
-          background: #f9fafb;
-          font-weight: bold;
-          width: 30%;
-        }
-        .footer {
-          margin-top: 20px;
-          font-size: 13px;
-          color: #555;
-          text-align: center;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="email-container">
-        <div class="email-header">
-          📩 New Request
-        </div>
-        <table>
-          <tr>
-            <td class="label">Name</td>
-            <td>${form.name}</td>
-          </tr>
-          <tr>
-            <td class="label">Email</td>
-            <td>${form.email}</td>
-          </tr>
-          <tr>
-            <td class="label">Mobile</td>
-            <td>${form.mobile}</td>
-          </tr>
-          <tr>
-            <td class="label">Message</td>
-            <td>${form.message}</td>
-          </tr>
-          <tr>
-            <td class="label">Newsletter</td>
-            <td>${form.subscribeToNewsletter ? 'Yes' : 'No'}</td>
-          </tr>
-        </table>
-        <div class="footer">
-          Regards,<br>
-          <b>Sama Health Website</b>
-        </div>
-      </div>
-    </body>
-    </html>
-    `;
+    
     try {
       // Submit to both EmailJS and Google Forms simultaneously
       const [emailResult, googleFormResult] = await Promise.allSettled([
@@ -279,7 +195,7 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
           process.env.REACT_APP_EMAILJS_SERVICE_ID,
           process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
           {
-            message: message,
+            message: `New User Request\n\n| Name               | ${form.name}           |\n| Email              | ${form.email}          |\n| Mobile             | ${form.mobile}         |\n| Message            | ${form.message}        |\n| Newsletter Signup  | ${form.subscribeToNewsletter ? 'Yes' : 'No'} |\n\nRegards,\nSama Health Website`,
             to_email: process.env.REACT_APP_EMAILJS_TO_EMAIL || 'engr.mubasharnazir@gmail.com',
           },
           process.env.REACT_APP_EMAILJS_USER_ID

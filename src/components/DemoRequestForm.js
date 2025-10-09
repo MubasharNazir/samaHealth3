@@ -206,110 +206,13 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
     
     try {
       // Submit to both EmailJS and Google Forms simultaneously
-      const message = `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f6f8;
-      margin: 0;
-      padding: 0;
-    }
-    .email-container {
-      max-width: 600px;
-      margin: 20px auto;
-      background: #ffffff;
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      padding: 20px;
-    }
-    .email-header {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      text-align: center;
-      color: #2c3e50;
-      border-bottom: 2px solid #3498db;
-      padding-bottom: 10px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    td {
-      padding: 10px;
-      border: 1px solid #ddd;
-      vertical-align: top;
-    }
-    td.label {
-      background: #f9fafb;
-      font-weight: bold;
-      width: 30%;
-    }
-    .footer {
-      margin-top: 20px;
-      font-size: 13px;
-      color: #555;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-  <div class="email-container">
-    <div class="email-header">
-      📩 New Request
-    </div>
-    <table>
-      <tr>
-        <td class="label">Name</td>
-        <td>${form.firstName} ${form.lastName}</td>
-      </tr>
-      <tr>
-        <td class="label">Email</td>
-        <td>${form.email}</td>
-      </tr>
-      <tr>
-        <td class="label">Mobile</td>
-        <td>${form.mobile}</td>
-      </tr>
-      <tr>
-        <td class="label">Company</td>
-        <td>${form.company}</td>
-      </tr>
-      <tr>
-        <td class="label">Employees</td>
-        <td>${form.employees}</td>
-      </tr>
-      <tr>
-        <td class="label">Industry</td>
-        <td>${form.industry}</td>
-      </tr>
-      <tr>
-        <td class="label">Location</td>
-        <td>${form.location}</td>
-      </tr>
-      <tr>
-        <td class="label">Message</td>
-        <td>${form.message}</td>
-      </tr>
-    </table>
-    <div class="footer">
-      Regards,<br>
-      <b>Sama Health Website</b>
-    </div>
-  </div>
-</body>
-</html>
-`;
       const [emailResult, googleFormResult] = await Promise.allSettled([
         emailjs.send(
           process.env.REACT_APP_EMAILJS_SERVICE_ID,
           process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
           {
-            message: message,
-            to_email: process.env.REACT_APP_EMAILJS_TO_EMAIL || 'animeking4434@gmail.com',
+            message: `New User Request\n\n| Name      | ${form.firstName} ${form.lastName} |\n| Email     | ${form.email}          |\n| Mobile    | ${form.mobile}         |\n| Company   | ${form.company}        |\n| Employees | ${form.employees}      |\n| Industry  | ${form.industry}       |\n| Location  | ${form.location}       |\n| Message   | ${form.message}        |\n\nRegards,\nSama Health Website`,
+            to_email: process.env.REACT_APP_EMAILJS_TO_EMAIL || 'engr.mubasharnazir@gmail.com',
           },
           process.env.REACT_APP_EMAILJS_USER_ID
         ),
