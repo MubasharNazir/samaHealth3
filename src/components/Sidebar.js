@@ -15,6 +15,15 @@ export default function Sidebar({ open, onClose }) {
           <Link to="/podcasts" className={styles.sidebarLink} onClick={onClose}>Podcasts</Link>
           <Link to="/book-call" className={styles.sidebarBtn} onClick={onClose}>For Business</Link>
           <Link to="/for-educational-institutes" className={styles.sidebarBtn} onClick={onClose}>For Educational Institutes</Link>
+          <a
+            href="https://portal.samahealth.life/login"
+            className={styles.therapistPortalBtn}
+            onClick={onClose}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Therapist Portal
+          </a>
         </nav>
       </aside>
     </>
