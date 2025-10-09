@@ -259,7 +259,7 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
 <body>
   <div class="email-container">
     <div class="email-header">
-      📩 New Demo Request
+      📩 New Request
     </div>
     <table>
       <tr>
