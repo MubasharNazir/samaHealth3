@@ -23,6 +23,7 @@ import NavigationBar from "./components/NavigationBar";
 import FeaturedInSection from "./components/FeaturedInSection";
 import DemoRequestForm from "./components/mainDemoReqForm";
 import Notification from "./components/Notification";
+import GetApp from "./components/GetApp";
 
 function getActiveTab(location) {
   if (location.pathname === '/') {
@@ -171,6 +172,7 @@ const App = () => (
       <Route path="/podcasts" element={<Podcast />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+      <Route path="/get-app" element={<GetApp />} />
     </Routes>
   </Router>
 );
