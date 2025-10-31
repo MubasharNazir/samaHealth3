@@ -27,8 +27,8 @@ const GetApp = () => {
     <main className="getAppPage" role="main">
       <div className="card">
         <img src="/assets/whitelogo.png" alt="Sama Health" className="brand" />
-        <h1 className="title">Get the Sama Health app</h1>
-        <p className="subtitle">Scan on desktop • Tap on mobile</p>
+        <h1 className="title">Download the Sama Health app</h1>
+        <p className="subtitle">Feel Better, Live Better - with SamaHealth</p>
 
         {isMobile ? (
           <div className="actions">
@@ -65,14 +65,14 @@ const GetApp = () => {
           <div className="qrGrid">
             <div className="qrItem">
               <img src={iosQr} alt="QR for App Store" className="qr" />
-              <span className="qrLabel">iOS • App Store</span>
+              {/* <span className="qrLabel">iOS • App Store</span> */}
               <a href={appStoreURL} className="storeBtnInline" aria-label="Download on the App Store">
                 <img src="/assets/apple.svg" alt="App Store" />
               </a>
             </div>
             <div className="qrItem">
               <img src={androidQr} alt="QR for Google Play" className="qr" />
-              <span className="qrLabel">Android • Google Play</span>
+              {/* <span className="qrLabel">Android • Google Play</span> */}
               <a href={playStoreURL} className="storeBtnInline" aria-label="Get it on Google Play">
                 <img src="/assets/playstore.svg" alt="Google Play" />
               </a>
