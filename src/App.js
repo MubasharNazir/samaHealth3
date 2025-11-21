@@ -98,6 +98,16 @@ function MainApp() {
     }
   }, [location.hash, location.pathname]);
 
+  // Google Analytics Page Tracking
+   useEffect(() => {
+     if (window.gtag) {
+      window.gtag("config", "G-T82TRJY9CN", {
+      page_path: location.pathname + location.search + location.hash,
+      });
+     }
+    }, [location]);
+
+
   return (
     <div className={styles.app}>
       {showNotification && (
