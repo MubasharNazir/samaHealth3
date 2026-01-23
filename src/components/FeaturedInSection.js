@@ -3,10 +3,10 @@ import styles from '../styles/FeaturedInSection.module.css';
 
 
 
-const FeaturedInSection = ({heading,logos}) => {
+const FeaturedInSection = ({heading,logos,className}) => {
   return (
-    <section className={styles.companiesSection}>
-      <h2 className={styles.companiesHeading}>{heading}</h2>
+    <section className={`${styles.companiesSection} ${className || ''}`}>
+      {heading && <h2 className={styles.companiesHeading}>{heading}</h2>}
       <div className={styles.slider}>
         <div className={styles.slideTrack}>
           {logos.map((logo, index) => (

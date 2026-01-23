@@ -13,8 +13,10 @@ export default function Sidebar({ open, onClose }) {
           <a href="/#testimonials" className={styles.sidebarLink} onClick={onClose}>Testimonials</a>
           <a href="/#faqs" className={styles.sidebarLink} onClick={onClose}>Faqs</a>
           <Link to="/podcasts" className={styles.sidebarLink} onClick={onClose}>Podcasts</Link>
-          <Link to="/book-call" className={styles.sidebarBtn} onClick={onClose}>For Business</Link>
-          <Link to="/for-educational-institutes" className={styles.sidebarBtn} onClick={onClose}>For Educational Institutes</Link>
+          {/* Commented out old dropdown options - replaced with single "For Organization" button */}
+          {/* <Link to="/book-call" className={styles.sidebarBtn} onClick={onClose}>For Business</Link> */}
+          {/* <Link to="/for-educational-institutes" className={styles.sidebarBtn} onClick={onClose}>For Educational Institutes</Link> */}
+          <Link to="/for-organization" className={styles.sidebarBtn} onClick={onClose}>For Organization</Link>
           <a
             href="https://portal.samahealth.life/login"
             className={styles.therapistPortalBtn}

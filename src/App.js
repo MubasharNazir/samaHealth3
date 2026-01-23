@@ -23,6 +23,7 @@ import NavigationBar from "./components/NavigationBar";
 import FeaturedInSection from "./components/FeaturedInSection";
 import DemoRequestForm from "./components/mainDemoReqForm";
 import Notification from "./components/Notification";
+import ForOrganization from "./components/ForOrganization";
 
 function getActiveTab(location) {
   if (location.pathname === '/') {
@@ -168,6 +169,7 @@ const App = () => (
       <Route path="/" element={<MainApp />} />
       <Route path="/book-call" element={<ContactForm />} />
       <Route path="/for-educational-institutes" element={<EducationalInstitute />} />
+      <Route path="/for-organization" element={<ForOrganization />} />
       <Route path="/podcasts" element={<Podcast />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
