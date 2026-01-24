@@ -1,8 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import Hero from "./components/Hero";
-import About from "./components/About";
-import Services from "./components/Services";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import TherapistStats from "./components/TherapistStats";
 import BestTherapists from "./components/BestTherapists";
@@ -15,10 +12,8 @@ import TermsAndConditions from './components/TermsAndConditions';
 import Podcast from './components/podcast';
 import styles from "./styles/App.module.css";
 import { BrowserRouter as Router, Routes, Route, useNavigate, Link, useLocation } from 'react-router-dom';
-import Sidebar from './components/Sidebar';
 import MeetupSection from './components/MeetupSection';
 import EducationalInstitute from "./components/educationalInstitute";
-import ContactDropdown from "./components/ContactDropdown";
 import NavigationBar from "./components/NavigationBar";
 import FeaturedInSection from "./components/FeaturedInSection";
 import DemoRequestForm from "./components/mainDemoReqForm";
@@ -43,7 +38,6 @@ function MainApp() {
   const location = useLocation();
   const activeTab = getActiveTab(location);
   const formRef = useRef(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
 
   const handleAnchorClick = (e) => {

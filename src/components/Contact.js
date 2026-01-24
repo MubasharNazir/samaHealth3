@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
 import styles from "../styles/Contact.module.css";
 import { contactContent } from "../content";
 import Notification from './Notification';

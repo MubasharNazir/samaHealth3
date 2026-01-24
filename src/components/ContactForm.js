@@ -2,11 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styles from '../styles/ContactForm.module.css';
 import Footer from './Footer';
-import Sidebar from './Sidebar';
 import stylesApp from "../styles/App.module.css";
 import Notification from './Notification';
 import FeaturedInSection from './FeaturedInSection';
-import ContactDropdown from './ContactDropdown';
 import NavigationBar from './NavigationBar';
 import DemoRequestForm from './DemoRequestForm';
 
@@ -30,7 +28,6 @@ export default function ContactForm() {
   const navigate = useNavigate();
   const activeTab = getActiveTab(location);
   const formRef = useRef(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     if (showNotification) {

@@ -169,30 +169,32 @@ const Hero = () => {
 
             <div className="storeIcons">
               {/* iOS Button */}
-              <a
-                href="#"
+              <button
+                type="button"
                 onClick={(e) => handleAppStoreClick(e, "ios")}
-                rel="noopener noreferrer"
+                style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+                aria-label="Download from App Store"
               >
                 <img
                   src="/assets/apple.svg"
                   alt="App Store"
                   className="storeBtnImg"
                 />
-              </a>
+              </button>
 
               {/* Android Button */}
-              <a
-                href="#"
+              <button
+                type="button"
                 onClick={(e) => handleAppStoreClick(e, "android")}
-                rel="noopener noreferrer"
+                style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+                aria-label="Download from Google Play Store"
               >
                 <img
                   src="/assets/playstore.svg"
                   alt="Google Play"
                   className="storeBtnImg"
                 />
-              </a>
+              </button>
             </div>
           </div>
         </div>
