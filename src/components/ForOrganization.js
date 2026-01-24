@@ -4,7 +4,7 @@ import styles from '../styles/ForOrganization.module.css';
 import stylesApp from '../styles/App.module.css';
 import NavigationBar from './NavigationBar';
 import Footer from './Footer';
-import DemoRequestForm from './DemoRequestForm';
+import DemoRequestForm from './mainDemoReqForm';
 import FeaturedInSection from './FeaturedInSection';
 import Notification from './Notification';
 
@@ -19,6 +19,7 @@ const ForOrganization = () => {
   const activeTab = getActiveTab(location);
   const formRef = useRef(null);
   const [showNotification, setShowNotification] = useState(false);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const handleAnchorClick = (e) => {
     e.preventDefault();
@@ -55,6 +56,14 @@ const ForOrganization = () => {
     {
       quote: "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.",
       author: "Shaihd Khan"
+    },
+    {
+      quote: "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.",
+      author: "Shaihd Khan"
+    },
+    {
+      quote: "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.",
+      author: "Shaihd Khan"
     }
   ];
 
@@ -65,6 +74,33 @@ const ForOrganization = () => {
     { src: "/assets/edge.webp", alt: "Edge" },
     { src: "/assets/gulf-news-logo.png", alt: "Gulf News" }
   ];
+
+  const handleDotClick = (index) => {
+    setCurrentTestimonial(index);
+  };
+
+  // Get testimonials to display based on screen size
+  const getVisibleTestimonials = () => {
+    if (window.innerWidth <= 768) {
+      // Mobile: show 1
+      return [testimonials[currentTestimonial]];
+    } else if (window.innerWidth <= 1024) {
+      // Tablet: show 2
+      const start = currentTestimonial;
+      return [
+        testimonials[start % testimonials.length],
+        testimonials[(start + 1) % testimonials.length]
+      ];
+    } else {
+      // Desktop: show 3
+      const start = currentTestimonial;
+      return [
+        testimonials[start % testimonials.length],
+        testimonials[(start + 1) % testimonials.length],
+        testimonials[(start + 2) % testimonials.length]
+      ];
+    }
+  };
 
   return (
     <div className={stylesApp.app}>
@@ -120,7 +156,7 @@ const ForOrganization = () => {
           <div className={styles.heroRight}>
             <div className={styles.heroImageWrapper}>
               <img 
-                src="/assets/hero2.jpg" 
+                src="/assets/Group 367.svg" 
                 alt="Team collaboration" 
                 className={styles.heroImage}
               />
@@ -178,13 +214,13 @@ const ForOrganization = () => {
                 </ul>
               </div>
               <div className={styles.careImage}>
-                <img src="/assets/hero1.jpeg" alt="Team collaboration" className={styles.careImg} />
+                <img src="/assets/Frame 1000006874.svg" alt="Team collaboration" className={styles.careImg} />
               </div>
             </div>
 
             <div className={styles.inclusiveSection}>
               <div className={styles.inclusiveImage}>
-                <img src="/assets/hero2.jpg" alt="Team discussion" className={styles.inclusiveImg} />
+                <img src="/assets/Frame 1000006874 (1).svg" alt="Team discussion" className={styles.inclusiveImg} />
               </div>
               <div className={styles.inclusiveContent}>
                 <h3 className={styles.inclusiveHeading}>Inclusive by design</h3>
@@ -203,9 +239,11 @@ const ForOrganization = () => {
           <img src="/assets/Frame 10.png" alt="Sama Health graphic" className={styles.ctaImage} />
         </div>
         <div className={styles.ctaContainer}>
-          <p className={styles.ctaText}>
-            Explore whether Sama Health is right for your organisation
-          </p>
+          <div className={styles.ctaTextWrapper}>
+            <p className={styles.ctaText}>
+              Explore whether Sama Health is right for your organisation
+            </p>
+          </div>
           <button
             className={styles.ctaButton}
             onClick={() => {
@@ -224,7 +262,7 @@ const ForOrganization = () => {
         <div className={styles.testimonialsContainer}>
           <h2 className={styles.testimonialsHeading}>What our clients say about us.</h2>
           <div className={styles.testimonialsGrid}>
-            {testimonials.map((testimonial, index) => (
+            {getVisibleTestimonials().map((testimonial, index) => (
               <div key={index} className={styles.testimonialCard}>
                 <div className={styles.quoteIcon}>"</div>
                 <p className={styles.testimonialQuote}>{testimonial.quote}</p>
@@ -236,11 +274,13 @@ const ForOrganization = () => {
             ))}
           </div>
           <div className={styles.testimonialsPagination}>
-            <span className={styles.paginationDot}></span>
-            <span className={styles.paginationDot}></span>
-            <span className={`${styles.paginationDot} ${styles.active}`}></span>
-            <span className={styles.paginationDot}></span>
-            <span className={styles.paginationDot}></span>
+            {testimonials.map((_, index) => (
+              <span 
+                key={index}
+                className={`${styles.paginationDot} ${currentTestimonial === index ? styles.active : ''}`}
+                onClick={() => handleDotClick(index)}
+              ></span>
+            ))}
           </div>
         </div>
       </section>
