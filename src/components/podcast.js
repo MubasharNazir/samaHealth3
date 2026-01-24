@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import styles from "../styles/Podcast.module.css";
 import stylesApp from "../styles/App.module.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Sidebar from './Sidebar';
-import ContactDropdown from "./ContactDropdown";
 import NavigationBar from "./NavigationBar";
 import Footer from "./Footer";
 // Sample podcast data - replace with your actual podcast data
@@ -108,7 +106,6 @@ const Podcast = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const activeTab = getActiveTab(location);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleAnchorClick = (e) => {
     e.preventDefault();

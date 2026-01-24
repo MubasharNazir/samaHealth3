@@ -3,11 +3,9 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styles from '../styles/ContactForm.module.css';
 import emailjs from 'emailjs-com';
 import Footer from './Footer';
-import Sidebar from './Sidebar';
 import stylesApp from "../styles/App.module.css";
 import Notification from './Notification';
 import FeaturedInSection from './FeaturedInSection';
-import ContactDropdown from './ContactDropdown';
 import NavigationBar from './NavigationBar';
 
 // Country code list (country name, code, flag)
@@ -122,7 +120,6 @@ export default function ContactForm() {
   const navigate = useNavigate();
   const activeTab = getActiveTab(location);
   const formRef = useRef(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     if (showNotification) {

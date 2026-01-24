@@ -36,7 +36,6 @@ export default function TermsAndConditions() {
       navigate(href);
     }
   };
-  const isContact = location.pathname === '/book-call';
   return (
     <div className={styles.legalPageBg}>
        <NavigationBar>

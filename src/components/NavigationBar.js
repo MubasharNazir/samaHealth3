@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import ContactDropdown from './ContactDropdown';
 import stylesApp from '../styles/App.module.css';
