@@ -1,7 +1,11 @@
+:root {
+  --font-work-sans: "Work Sans", Arial, sans-serif;
+}
+
 .podcastPage {
   background: #fdf8ef;
   min-height: 100vh;
-  font-family: "Work Sans", Arial, sans-serif;
+  font-family: var(--font-work-sans);
 }
 
 .container {
@@ -18,10 +22,11 @@
 
 .title {
   font-size: 2.8rem;
-  font-weight: 700;
+  font-weight: 500;
   color: #181c23;
   margin-bottom: 1rem;
   line-height: 1.2;
+  font-family: var(--font-work-sans);
 }
 
 .subtitle {
@@ -31,6 +36,7 @@
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.4;
+  font-family: var(--font-work-sans);
 }
 
 /* Category Filter */
@@ -52,7 +58,7 @@
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: "Work Sans", Arial, sans-serif;
+  font-family: var(--font-work-sans);
 }
 
 .categoryBtn:hover {
@@ -159,14 +165,16 @@
   margin-bottom: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  font-family: var(--font-work-sans);
 }
 
 .podcastTitle {
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 500;
   color: #181c23;
   margin-bottom: 0.8rem;
   line-height: 1.3;
+  font-family: var(--font-work-sans);
 }
 
 .podcastDescription {
@@ -178,6 +186,7 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  font-family: var(--font-work-sans);
 }
 
 .podcastMeta {
@@ -190,6 +199,7 @@
   color: #e6a481;
   font-weight: 500;
   font-size: 0.9rem;
+  font-family: var(--font-work-sans);
 }
 
 /* Modal Styles */
@@ -273,14 +283,16 @@
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  font-family: var(--font-work-sans);
 }
 
 .modalTitle {
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 500;
   color: #181c23;
   margin-bottom: 1rem;
   line-height: 1.3;
+  font-family: var(--font-work-sans);
 }
 
 .modalDescription {
@@ -288,6 +300,7 @@
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
+  font-family: var(--font-work-sans);
 }
 
 .modalMeta {
@@ -301,6 +314,7 @@
   color: #e6a481;
   font-weight: 600;
   font-size: 1rem;
+  font-family: var(--font-work-sans);
 }
 
 /* Responsive Design */

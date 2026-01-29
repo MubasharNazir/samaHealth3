@@ -1,3 +1,7 @@
+:root {
+  --font-work-sans: "Work Sans", Arial, sans-serif;
+}
+
 /* Hero Section */
 .heroSection {
   background: #fdf8ef;
@@ -23,10 +27,11 @@
 
 .heroHeading {
   font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-  font-weight: 700;
+  font-weight: 500;
   color: #181c23;
   line-height: 1.2;
   margin-bottom: 1.5rem;
+  font-family: var(--font-work-sans);
 }
 
 .heroDescription {
@@ -34,6 +39,7 @@
   color: #181c23;
   line-height: 1.6;
   margin-bottom: 2rem;
+  font-family: var(--font-work-sans);
 }
 
 .talkToUsBtn {
@@ -46,7 +52,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: background 0.2s;
-  font-family: "Work Sans", Arial, sans-serif;
+  font-family: var(--font-work-sans);
 }
 
 .talkToUsBtn:hover {
@@ -106,9 +112,10 @@
 
 .engagementHeading {
   font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 700;
+  font-weight: 500;
   color: #181c23;
   margin-bottom: 1.5rem;
+  font-family: var(--font-work-sans);
 }
 
 .engagementText {
@@ -116,6 +123,7 @@
   color: #181c23;
   line-height: 1.6;
   margin-bottom: 1rem;
+  font-family: var(--font-work-sans);
 }
 
 .engagementText:last-of-type {
@@ -143,10 +151,11 @@
 
 .howItWorksHeading {
   font-size: clamp(2rem, 4vw, 2.5rem);
-  font-weight: 700;
+  font-weight: 500;
   color: #181c23;
   margin-bottom: 1.5rem;
   line-height: 1.2;
+  font-family: var(--font-work-sans);
 }
 
 .howItWorksDescription {
@@ -155,6 +164,7 @@
   line-height: 1.7;
   max-width: 800px;
   margin: 0 auto;
+  font-family: var(--font-work-sans);
 }
 
 .howItWorksContent {
@@ -180,10 +190,11 @@
 
 .careHeading {
   font-size: clamp(1.2rem, 2vw, 1.5rem);
-  font-weight: 700;
+  font-weight: 500;
   color: #181c23;
   margin-bottom: 1.2rem;
   line-height: 1.3;
+  font-family: var(--font-work-sans);
 }
 
 .careList {
@@ -199,6 +210,7 @@
   line-height: 1.7;
   margin-bottom: 0.9rem;
   position: relative;
+  font-family: var(--font-work-sans);
 }
 
 .careList li:last-child {
@@ -270,16 +282,18 @@
 
 .inclusiveHeading {
   font-size: clamp(1.2rem, 2vw, 1.5rem);
-  font-weight: 700;
+  font-weight: 500;
   color: #181c23;
   margin-bottom: 1rem;
   line-height: 1.3;
+  font-family: var(--font-work-sans);
 }
 
 .inclusiveText {
   font-size: clamp(0.95rem, 1.2vw, 1rem);
   color: #181c23;
   line-height: 1.7;
+  font-family: var(--font-work-sans);
 }
 
 /* CTA Section */
@@ -346,6 +360,7 @@
   line-height: 1.4;
   width: 100%;
   text-align: center;
+  font-family: var(--font-work-sans);
 }
 
 .ctaButton {
@@ -358,7 +373,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: "Work Sans", Arial, sans-serif;
+  font-family: var(--font-work-sans);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -382,11 +397,12 @@
 
 .testimonialsHeading {
   font-size: clamp(2rem, 4vw, 2.5rem);
-  font-weight: 700;
+  font-weight: 500;
   color: #181c23;
   text-align: center;
   margin-bottom: 4rem;
   line-height: 1.2;
+  font-family: var(--font-work-sans);
 }
 
 .testimonialsGrid {
@@ -420,7 +436,8 @@
   font-weight: 700;
   line-height: 0.8;
   margin-bottom: 1.5rem;
-  font-family: Georgia, serif;
+  font-family: var(--font-work-sans);
+  text-align: center;
 }
 
 .testimonialQuote {
@@ -429,13 +446,15 @@
   line-height: 1.65;
   margin-bottom: auto;
   flex-grow: 1;
+  font-family: var(--font-work-sans);
 }
 
 .testimonialAuthor {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 0.75rem;
+  margin-top: auto;
   padding-top: 1.5rem;
 }
 
@@ -451,6 +470,8 @@
   font-size: 0.95rem;
   font-weight: 600;
   color: #181c23;
+  text-align: center;
+  font-family: var(--font-work-sans);
 }
 
 .testimonialsPagination {
@@ -458,6 +479,19 @@
   justify-content: center;
   gap: 0.5rem;
   margin-top: 2rem;
+}
+
+.paginationDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #D4D0C8;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.paginationDot.active {
+  background: #5F6C47;
 }
 
 /* About Section */
@@ -485,10 +519,11 @@
 
 .aboutHeading {
   font-size: clamp(1.5rem, 2.5vw, 1.85rem);
-  font-weight: 700;
+  font-weight: 500;
   color: #181c23;
   margin-bottom: 1.2rem;
   line-height: 1.3;
+  font-family: var(--font-work-sans);
 }
 
 .aboutText {
@@ -496,24 +531,67 @@
   color: #181c23;
   line-height: 1.75;
   max-width: 100%;
+  font-family: var(--font-work-sans);
 }
 
 /* Form Container */
 .formContainer {
   background: #fdf8ef;
-  padding: 5rem 6rem;
-  display: flex;
-  justify-content: center;
+  padding: 6rem 0;
+  width: 100%;
+  position: relative;
+}
+
+.formContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(253, 248, 239, 0.7);
+  z-index: 0;
 }
 
 .formContainer > * {
+  position: relative;
+  z-index: 1;
+}
+
+.formContainer > section {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  min-height: auto !important;
+}
+
+.formContainer > section > div {
   max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 6rem;
   width: 100%;
-  padding: 0 4rem;
   box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 3rem 6rem;
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .heroSection {
+    padding: 3.5rem 4rem;
+  }
+
+  .engagementContainer,
+  .howItWorksContainer,
+  .testimonialsContainer,
+  .aboutContainer {
+    padding: 0 4rem;
+  }
+}
+
 @media (max-width: 1024px) {
   .heroSection {
     padding: 3rem 2rem;
@@ -527,10 +605,19 @@
 
   .heroLeft {
     max-width: 100%;
+    text-align: center;
   }
 
   .heroImageWrapper {
     max-width: 100%;
+  }
+
+  .heroHeading {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+  }
+
+  .heroDescription {
+    font-size: clamp(1rem, 2vw, 1.15rem);
   }
 
   .engagementSection {
@@ -596,8 +683,13 @@
   }
 
   .testimonialsGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+  }
+
+  .testimonialCard:nth-child(2) {
+    transform: none;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   }
 
   .aboutSection {
@@ -610,21 +702,46 @@
   }
 
   .formContainer {
-    padding: 3rem 2rem;
+    padding: 5rem 0;
+  }
+
+  .formContainer > section > div {
+    padding: 2rem 2rem;
+    background: rgba(255, 255, 255, 0.9);
   }
 }
 
 @media (max-width: 768px) {
   .heroSection {
     padding: 2rem 1rem;
+    min-height: auto;
+  }
+
+  .heroContainer {
+    gap: 2rem;
   }
 
   .heroHeading {
-    font-size: 1.75rem;
+    font-size: clamp(1.5rem, 5vw, 1.75rem);
+    margin-bottom: 1rem;
   }
 
   .heroDescription {
-    font-size: 1rem;
+    font-size: clamp(0.95rem, 2.5vw, 1rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .talkToUsBtn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .engagementSection {
+    padding: 0;
+  }
+
+  .engagementBox {
+    padding: 2rem 0;
   }
 
   .engagementContainer {
@@ -632,20 +749,53 @@
   }
 
   .engagementHeading {
-    font-size: 1.5rem;
+    font-size: clamp(1.3rem, 4vw, 1.5rem);
+    margin-bottom: 1rem;
+  }
+
+  .engagementText {
+    font-size: clamp(0.9rem, 2vw, 1rem);
   }
 
   .howItWorksSection {
     padding: 2rem 1rem;
   }
 
+  .howItWorksContainer {
+    padding: 0 1rem;
+  }
+
+  .howItWorksHeader {
+    margin-bottom: 2rem;
+  }
+
   .howItWorksHeading {
-    font-size: 1.75rem;
+    font-size: clamp(1.5rem, 4vw, 1.75rem);
+    margin-bottom: 1rem;
+  }
+
+  .howItWorksDescription {
+    font-size: clamp(0.95rem, 2.5vw, 1rem);
+  }
+
+  .howItWorksContent {
+    gap: 2rem;
+  }
+
+  .careHeading,
+  .inclusiveHeading {
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+  }
+
+  .careList li,
+  .inclusiveText {
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
   }
 
   .careImage,
   .inclusiveImage {
     max-width: 100%;
+    justify-self: center;
   }
 
   .ctaSection {
@@ -664,20 +814,40 @@
   }
 
   .ctaText {
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+  }
+
+  .ctaButton {
+    width: 100%;
+    max-width: 300px;
   }
 
   .testimonialsSection {
     padding: 2rem 1rem;
   }
 
+  .testimonialsContainer {
+    padding: 0;
+  }
+
   .testimonialsHeading {
-    font-size: 1.75rem;
+    font-size: clamp(1.5rem, 4vw, 1.75rem);
+    margin-bottom: 2.5rem;
+  }
+
+  .testimonialsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .testimonialCard {
     padding: 1.5rem;
     min-height: auto;
+  }
+
+  .testimonialCard:nth-child(2) {
+    transform: none;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   }
 
   .quoteIcon {
@@ -693,11 +863,21 @@
   }
 
   .aboutHeading {
-    font-size: 1.5rem;
+    font-size: clamp(1.3rem, 3.5vw, 1.5rem);
+  }
+
+  .aboutText {
+    font-size: clamp(0.95rem, 2.5vw, 1rem);
   }
 
   .formContainer {
+    padding: 4rem 0;
+  }
+
+  .formContainer > section > div {
     padding: 2rem 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
   }
 }
 
@@ -706,14 +886,58 @@
     padding: 1.5rem 1rem;
   }
 
-  .talkToUsBtn,
-  .ctaButton {
+  .heroHeading {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .heroDescription {
+    font-size: 0.95rem;
+  }
+
+  .talkToUsBtn {
     width: 100%;
-    max-width: 250px;
+    max-width: 100%;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .engagementBox {
+    padding: 1.5rem 0;
+  }
+
+  .engagementContainer {
+    padding: 0 0.75rem;
+  }
+
+  .engagementHeading {
+    font-size: 1.3rem;
+  }
+
+  .engagementText {
+    font-size: 0.9rem;
+  }
+
+  .howItWorksSection {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .howItWorksContainer {
+    padding: 0;
+  }
+
+  .howItWorksHeading {
+    font-size: 1.5rem;
+  }
+
+  .careHeading,
+  .inclusiveHeading {
+    font-size: 1.1rem;
   }
 
   .ctaSection {
     padding: 2rem 1rem;
+    min-height: auto;
   }
 
   .ctaGraphic {
@@ -721,18 +945,116 @@
   }
 
   .ctaText {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
+    line-height: 1.3;
   }
 
-  .quoteIcon {
-    font-size: 3rem;
+  .ctaButton {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.75rem 1.5rem;
   }
 
-  .testimonialQuote {
-    font-size: 0.9rem;
+  .testimonialsSection {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .testimonialsHeading {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .testimonialsGrid {
+    gap: 1rem;
   }
 
   .testimonialCard {
-    padding: 1.5rem 1.25rem;
+    padding: 1.25rem 1rem;
+    min-height: auto;
+  }
+
+  .quoteIcon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .testimonialQuote {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .authorAvatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .authorName {
+    font-size: 0.85rem;
+  }
+
+  .testimonialsPagination {
+    margin-top: 1.5rem;
+    gap: 0.4rem;
+  }
+
+  .paginationDot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .aboutSection {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .aboutContainer {
+    gap: 2rem;
+  }
+
+  .aboutHeading {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .aboutText {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .formContainer {
+    padding: 2.5rem 0;
+  }
+
+  .formContainer > section > div {
+    padding: 1.5rem 0.75rem;
+    border-radius: 8px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .heroHeading {
+    font-size: 1.3rem;
+  }
+
+  .heroDescription {
+    font-size: 0.9rem;
+  }
+
+  .engagementHeading,
+  .howItWorksHeading,
+  .testimonialsHeading {
+    font-size: 1.2rem;
+  }
+
+  .ctaText {
+    font-size: 1rem;
+  }
+
+  .testimonialCard {
+    padding: 1rem 0.75rem;
+  }
+
+  .quoteIcon {
+    font-size: 2rem;
   }
 }

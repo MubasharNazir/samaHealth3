@@ -105,7 +105,12 @@ const GOOGLE_FORM_CONFIG = {
   }
 };
 
-export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRef }) {
+export default function DemoRequestForm({ 
+  onSubmitSuccess, 
+  onSubmitError, 
+  formRef,
+  variant = 'default' // 'default' or 'organization'
+}) {
   const [form, setForm] = useState(initialState);
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
@@ -244,10 +249,19 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
       <div className={styles.container}>
         <div className={styles.row}>
           <div className={`${styles.colLg6} ${styles.colMd6} ${styles.colSm12} ${styles.col12} ${styles.aSide}`}>
-            
-            <div className={styles.formHeading}>Life is hard sometimes. Insta-therapy can only help so much. Let's talk about it.</div>
-            <p>Access qualified therapists that you can deeply connect with. We offer a curated offering for the South Asian community.</p>
-            <div className={styles.formSubHeading}>Download the app to feel better</div>
+            {variant === 'organization' ? (
+              <>
+                <div className={styles.formHeading}>Support your workforce with accessible mental health care</div>
+                <p>Empower your employees with culturally responsive mental health support. Sama Health provides confidential, employee-led access to licensed therapists designed for modern workplaces.</p>
+                <div className={styles.formSubHeading}>Get started with Sama Health for your organization</div>
+              </>
+            ) : (
+              <>
+                <div className={styles.formHeading}>Life is hard sometimes. Insta-therapy can only help so much. Let's talk about it.</div>
+                <p>Access qualified therapists that you can deeply connect with. We offer a curated offering for the South Asian community.</p>
+                <div className={styles.formSubHeading}>Download the app to feel better</div>
+              </>
+            )}
             <div className={`${styles.contentStartAligned} ${styles.gap2}`}>
               <a 
                 href="https://apps.apple.com/ae/app/sama-health/id6447992708" 
@@ -276,7 +290,9 @@ export default function DemoRequestForm({ onSubmitSuccess, onSubmitError, formRe
           <div className={`${styles.colLg6} ${styles.colMd6} ${styles.colSm12} ${styles.col12}`}>
             <div className={`${styles.card} ${styles.contactUsSection}`}>
               <div className={styles.cardBody}>
-                <h2 className={`${styles.formHeading}`}>Start your wellness journey</h2>
+                <h2 className={`${styles.formHeading}`}>
+                  {variant === 'organization' ? 'Request a demo for your organization' : 'Start your wellness journey'}
+                </h2>
                 <form 
                   autoComplete="off" 
                   className={`${styles.antForm} ${styles.antFormVertical}`} 

@@ -1,3 +1,7 @@
+:root {
+  --font-work-sans: "Work Sans", Arial, sans-serif;
+}
+
 @keyframes scroll {
     0% {
       transform: translateX(0);
@@ -15,10 +19,10 @@
   
   .companiesHeading {
     font-size: 2.2rem;
-    font-weight: 700;
+    font-weight: 500;
     color: #181c23;
     margin-bottom: 2.5rem;
-    font-family: "Work Sans", Arial, sans-serif;
+    font-family: var(--font-work-sans);
   }
   
   .slider {

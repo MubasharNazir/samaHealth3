@@ -64,6 +64,10 @@ const ForOrganization = () => {
     {
       quote: "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.",
       author: "Shaihd Khan"
+    },
+    {
+      quote: "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.",
+      author: "Shaihd Khan"
     }
   ];
 
@@ -94,12 +98,17 @@ const ForOrganization = () => {
     } else {
       // Desktop: show 3
       const start = currentTestimonial;
-      return [
-        testimonials[start % testimonials.length],
-        testimonials[(start + 1) % testimonials.length],
-        testimonials[(start + 2) % testimonials.length]
-      ];
+      const visible = [];
+      for (let i = 0; i < 3; i++) {
+        visible.push(testimonials[(start + i) % testimonials.length]);
+      }
+      return visible;
     }
+  };
+
+  // Calculate which dot should be active based on current testimonial
+  const getActiveDotIndex = () => {
+    return currentTestimonial;
   };
 
   return (
@@ -268,7 +277,7 @@ const ForOrganization = () => {
                 <p className={styles.testimonialQuote}>{testimonial.quote}</p>
                 <div className={styles.testimonialAuthor}>
                   <div className={styles.authorAvatar}></div>
-                  <span className={styles.authorName}>{testimonial.author}</span>
+                  <div className={styles.authorName}>{testimonial.author}</div>
                 </div>
               </div>
             ))}
@@ -277,8 +286,17 @@ const ForOrganization = () => {
             {testimonials.map((_, index) => (
               <span 
                 key={index}
-                className={`${styles.paginationDot} ${currentTestimonial === index ? styles.active : ''}`}
+                className={`${styles.paginationDot} ${getActiveDotIndex() === index ? styles.active : ''}`}
                 onClick={() => handleDotClick(index)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleDotClick(index);
+                  }
+                }}
+                aria-label={`Go to testimonial ${index + 1}`}
               ></span>
             ))}
           </div>
@@ -304,11 +322,20 @@ const ForOrganization = () => {
       </section>
 
       {/* Form Section */}
-      <div className={styles.formContainer}>
+      <div 
+        className={styles.formContainer}
+        style={{
+          backgroundImage: 'url(/assets/background.avif)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
         <DemoRequestForm 
           formRef={formRef}
           onSubmitSuccess={handleFormSubmitSuccess}
           onSubmitError={handleFormSubmitError}
+          variant="organization"
         />
       </div>
 

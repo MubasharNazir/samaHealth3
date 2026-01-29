@@ -36,9 +36,31 @@
 @media (max-width: 768px) {
   .formHeading {
     text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
   }
   .formSubHeading {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .aSide {
+    padding-right: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .aSide p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  
+  .playstoreIcon {
+    width: 120px;
+  }
+  
+  .gap2 {
+    gap: 10px;
   }
 }
 .row {
@@ -467,16 +489,24 @@
   
   .aSide {
     padding-right: 0;
-    margin-bottom: 40px;
+    margin-bottom: 2rem;
     text-align: center;
   }
   
   .aSide h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    margin: 15px 0;
   }
   
   .aSide h2 {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
+    margin: 20px 0 15px 0;
+  }
+  
+  .aSide p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
   }
   
   .cardBody {
@@ -492,13 +522,44 @@
   }
   
   .playstoreIcon {
-    width: 130px;
+    width: 110px;
+  }
+  
+  .gap2 {
+    gap: 10px;
   }
 }
 
 @media (max-width: 480px) {
+  .formHeading {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .formSubHeading {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .aSide {
+    margin-bottom: 1.5rem;
+  }
+  
   .aSide h1 {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
+    margin: 10px 0;
+    line-height: 1.3;
+  }
+  
+  .aSide h2 {
+    font-size: 1rem;
+    margin: 15px 0 10px 0;
+  }
+  
+  .aSide p {
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
   }
   
   .cardBody {
@@ -506,11 +567,16 @@
   }
   
   .playstoreIcon {
-    width: 120px;
+    width: 100px;
   }
   
   .contentStartAligned {
     justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .gap2 {
+    gap: 8px;
   }
 }
 
