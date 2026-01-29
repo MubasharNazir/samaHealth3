@@ -424,20 +424,30 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.testimonialCard:nth-child(1),
+.testimonialCard:nth-child(3) {
+  transform: scale(0.95);
+  opacity: 0.9;
+}
+
 .testimonialCard:nth-child(2) {
-  transform: scale(1.05);
+  transform: scale(1);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   z-index: 2;
 }
 
 .quoteIcon {
-  font-size: 5rem;
-  color: #5F6C47;
-  font-weight: 700;
-  line-height: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 1.5rem;
-  font-family: var(--font-work-sans);
   text-align: center;
+}
+
+.quoteIcon img {
+  width: 60px;
+  height: auto;
+  object-fit: contain;
 }
 
 .testimonialQuote {
@@ -850,8 +860,8 @@
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   }
 
-  .quoteIcon {
-    font-size: 4rem;
+  .quoteIcon img {
+    width: 50px;
   }
 
   .aboutSection {
@@ -974,8 +984,11 @@
   }
 
   .quoteIcon {
-    font-size: 2.5rem;
     margin-bottom: 1rem;
+  }
+
+  .quoteIcon img {
+    width: 40px;
   }
 
   .testimonialQuote {
@@ -1054,7 +1067,7 @@
     padding: 1rem 0.75rem;
   }
 
-  .quoteIcon {
-    font-size: 2rem;
+  .quoteIcon img {
+    width: 35px;
   }
 }

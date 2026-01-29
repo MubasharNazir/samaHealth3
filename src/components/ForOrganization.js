@@ -273,7 +273,9 @@ const ForOrganization = () => {
           <div className={styles.testimonialsGrid}>
             {getVisibleTestimonials().map((testimonial, index) => (
               <div key={index} className={styles.testimonialCard}>
-                <div className={styles.quoteIcon}>"</div>
+                <div className={styles.quoteIcon}>
+                  <img src="/assets/Vector.svg" alt="Quote icon" />
+                </div>
                 <p className={styles.testimonialQuote}>{testimonial.quote}</p>
                 <div className={styles.testimonialAuthor}>
                   <div className={styles.authorAvatar}></div>
