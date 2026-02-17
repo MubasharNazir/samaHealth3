@@ -257,9 +257,9 @@ export default function DemoRequestForm({
               </>
             ) : (
               <>
-                <div className={styles.formHeading}>Life is hard sometimes. Insta-therapy can only help so much. Let's talk about it.</div>
-                <p>Access qualified therapists that you can deeply connect with. We offer a curated offering for the South Asian community.</p>
-                <div className={styles.formSubHeading}>Download the app to feel better</div>
+            <div className={styles.formHeading}>Life is hard sometimes. Insta-therapy can only help so much. Let's talk about it.</div>
+            <p>Access qualified therapists that you can deeply connect with. We offer a curated offering for the South Asian community.</p>
+            <div className={styles.formSubHeading}>Download the app to feel better</div>
               </>
             )}
             <div className={`${styles.contentStartAligned} ${styles.gap2}`}>

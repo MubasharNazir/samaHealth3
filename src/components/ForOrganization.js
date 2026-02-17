@@ -47,15 +47,18 @@ const ForOrganization = () => {
   const testimonials = [
     {
       quote: "Attending the art therapy workshop with Sama Health was a truly restorative experience. The gentle guidance, combined with soothing music and a supportive space to create and share, allowed me to access a sense of calm and self-awareness I hadn't felt in a long time. Honestly, it was more than an art therapy workshop; it was a meaningful step toward personal well-being.",
-      author: "Workshop Participant"
+      author: "Student at Westford",
+      avatarColor: "#E8E3D9"
     },
     {
       quote: "The Art therapy workshop hosted by Sama Health was deeply meaningful. Exploring emotions through art in a safe and supportive space enabled powerful self-expression and healthier emotional regulation. It was a therapeutic experience we would happily repeat.",
-      author: "Workshop Participant"
+      author: "Student at Westford",
+      avatarColor: "#D4D0C8"
     },
     {
-      quote: "Attending the art therapy workshop with Sama Health was a truly restorative experience. The gentle guidance, combined with soothing music and a supportive space to create and share, allowed me to access a sense of calm and self-awareness I hadn't felt in a long time. Honestly, it was more than an art therapy workshop; it was a meaningful step toward personal well-being.",
-      author: "Workshop Participant"
+      quote: "I was initially hesitant about joining an art therapy session, but Sama Health's approach completely changed my perspective. The facilitators created such a welcoming environment where I felt comfortable expressing myself creatively. Through painting and drawing, I discovered new ways to process my emotions and found a sense of peace I'd been searching for. This workshop was transformative.",
+      author: "Student at Westford",
+      avatarColor: "#FCEDDB"
     },
     // {
     //   quote: "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.",
@@ -282,7 +285,7 @@ const ForOrganization = () => {
                 </div>
                 <p className={styles.testimonialQuote}>{testimonial.quote}</p>
                 <div className={styles.testimonialAuthor}>
-                  <div className={styles.authorAvatar}></div>
+                  <div className={styles.authorAvatar} style={{ backgroundColor: testimonial.avatarColor }}></div>
                   <div className={styles.authorName}>{testimonial.author}</div>
                 </div>
               </div>
